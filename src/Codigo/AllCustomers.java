@@ -35,7 +35,7 @@ public class AllCustomers {
     public static void load() {
         try {
             //Se crea al lector y lee el arhivo
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\DataBase\\Customer"));
+            BufferedReader reader = new BufferedReader(new FileReader("C:\\BaseDatosProyecto\\Customer.txt"));
             //Se pone el contador en 0 porque el Array debe estar vacío para poder pasar toda la información
             counter = 0;
             
@@ -70,7 +70,7 @@ public class AllCustomers {
     public static void save() {
         try {
             //Se abre el archivo con el "printer"
-            PrintWriter printer = new PrintWriter("C:\\DataBase\\Customer");
+            PrintWriter printer = new PrintWriter("C:\\BaseDatosProyecto\\Customer.txt");
             
             //Por cada cosa que haya en el Array
             for (int i = 0; i < counter; i++) {
@@ -83,5 +83,22 @@ public class AllCustomers {
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
+    }
+    
+    // Gets the customer that has the given username.
+    public static Customer get(String username){
+        //Loop through the array
+        for(int i = 0; i < counter; i++){
+            //with this, look for the username
+            Customer customer = customers[i];
+            String thisUsername = customer.getUsername();
+            
+            //if the username is equals to the given username
+            if(username.equals(thisUsername)){
+                //return username
+                return customer;
+            }
+        }
+        return null;
     }
 }

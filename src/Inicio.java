@@ -1,6 +1,8 @@
+import Codigo.AllCustomers;
 import Codigo.Customer;
 import java.awt.Color;
 import java.io.*;
+import javax.swing.JOptionPane;
 
 public class Inicio extends javax.swing.JPanel {
 
@@ -27,7 +29,7 @@ public class Inicio extends javax.swing.JPanel {
         TextoIdentificacion = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         FondoInicio = new javax.swing.JPanel();
-        BotonInicio = new javax.swing.JLabel();
+        loginBtn = new javax.swing.JLabel();
         EscribirIdentificacion = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -70,21 +72,21 @@ public class Inicio extends javax.swing.JPanel {
 
         FondoInicio.setBackground(new java.awt.Color(0, 153, 153));
 
-        BotonInicio.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        BotonInicio.setForeground(new java.awt.Color(0, 0, 0));
-        BotonInicio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        BotonInicio.setText("INICIAR SESIÓN");
-        BotonInicio.setToolTipText("Iniciar Sesión");
-        BotonInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+        loginBtn.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        loginBtn.setForeground(new java.awt.Color(0, 0, 0));
+        loginBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loginBtn.setText("INICIAR SESIÓN");
+        loginBtn.setToolTipText("Iniciar Sesión");
+        loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BotonInicioMouseClicked(evt);
+                loginBtnMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotonInicioMouseEntered(evt);
+                loginBtnMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotonInicioMouseExited(evt);
+                loginBtnMouseExited(evt);
             }
         });
 
@@ -92,11 +94,11 @@ public class Inicio extends javax.swing.JPanel {
         FondoInicio.setLayout(FondoInicioLayout);
         FondoInicioLayout.setHorizontalGroup(
             FondoInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BotonInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
         );
         FondoInicioLayout.setVerticalGroup(
             FondoInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BotonInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         add(FondoInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 150, 50));
@@ -136,21 +138,38 @@ public class Inicio extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_EscribirIdentificacionMousePressed
 
-    private void BotonInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInicioMouseClicked
+    private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
+        String username = EscribirIdentificacion.getText();
+        String password = EscribirClave.getText();
         
-    }//GEN-LAST:event_BotonInicioMouseClicked
+        Customer customer = AllCustomers.get(username);
+        
+        if(customer == null){
+            JOptionPane.showMessageDialog(null, "Identificación o contraseña incorrectas");
+            EscribirIdentificacion.setText("Ingrese su Identificación");
+            EscribirClave.setText("Ingrese su Clave");
+        }else{
+            String verifyPass = customer.getPassword();
+            if(password.equals(verifyPass)){
+               //move to the another JPanel, login successful
+            }else{
+                JOptionPane.showMessageDialog(null, "Identificación o contraseña incorrectas");
+                EscribirIdentificacion.setText("Ingrese su Identificación");
+                EscribirClave.setText("Ingrese su Clave");
+            }
+        }
+    }//GEN-LAST:event_loginBtnMouseClicked
 
-    private void BotonInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInicioMouseEntered
+    private void loginBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseEntered
         FondoInicio.setBackground(new Color(0, 204, 204));
-    }//GEN-LAST:event_BotonInicioMouseEntered
+    }//GEN-LAST:event_loginBtnMouseEntered
 
-    private void BotonInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInicioMouseExited
+    private void loginBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseExited
         FondoInicio.setBackground(new Color(0, 153, 153));
-    }//GEN-LAST:event_BotonInicioMouseExited
+    }//GEN-LAST:event_loginBtnMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel BotonInicio;
     private javax.swing.JTextField EscribirClave;
     private javax.swing.JTextField EscribirIdentificacion;
     private javax.swing.JPanel FondoInicio;
@@ -159,5 +178,6 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JLabel TextoPrincipal;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel loginBtn;
     // End of variables declaration//GEN-END:variables
 }

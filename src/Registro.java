@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JOptionPane;
 
 public class Registro extends javax.swing.JPanel {    
+    
     public Registro() {
         initComponents();
     }
@@ -202,7 +203,10 @@ public class Registro extends javax.swing.JPanel {
         String username = usernameField.getText();
         int pass = ThreadLocalRandom.current().nextInt(100, 999 + 1);
         String password = String.valueOf(pass);
-        String balance = balanceField.getText();
+        int ahorro = Integer.parseInt(balanceField.getText());
+        String balance = String.valueOf(ahorro);
+        
+        int ahorroMin = 10000;
         
         //Esta igual se sigue declarando porque el constructor lo requiere, se puede dejar vacío y luego rellenarlo
         String loans = "";
@@ -211,9 +215,15 @@ public class Registro extends javax.swing.JPanel {
         //Se llama al constructor para guardar la información
         Customer customer = new Customer(name, tel, email, username, password, balance, loans);
         
-        //Se llaman a los métodos para agregar la información al Array y al archivo de texto
-        AllCustomers.add(customer);
-        AllCustomers.save();
+        if(!name.equals("Ingrese su Nombre") && !name.isEmpty() && !tel.equals("Ingrese su número de Teléfono") && !tel.isEmpty()){
+            if(!email.equals("Ingrese su dirección de Correo") && !email.isEmpty() && !username.equals("Ingrese su Identificación")){
+                if(!balance.equals("Ingrese su monto de ahorro inicial") && !balance.isEmpty() && ahorro > ahorroMin){
+                    //Se llaman a los métodos para agregar la información al Array y al archivo de texto
+                    AllCustomers.add(customer);
+                    AllCustomers.save();
+                }
+            }
+        }
     }//GEN-LAST:event_saveBtnMouseClicked
 
     private void saveBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseEntered
