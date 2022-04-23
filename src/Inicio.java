@@ -87,7 +87,7 @@ public class Inicio extends javax.swing.JPanel {
             .addComponent(salirBoton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        add(salirFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 70, 30));
+        add(salirFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, 70, 30));
 
         contenido.setBackground(new java.awt.Color(255, 255, 255));
 

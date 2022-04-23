@@ -14,7 +14,7 @@ public class Asociado extends javax.swing.JPanel {
     }
     
     private void ShowPanel(JPanel p){
-        p.setSize(570, 410);
+        p.setSize(570, 380);
         p.setLocation(0, 0);
         
         contenido.removeAll();
