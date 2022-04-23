@@ -85,20 +85,24 @@ public class AllCustomers {
         }
     }
     
-    // Gets the customer that has the given username.
+    /*Método para conseguir al Asociado con el ID que se escribió en el JPanel de Inicio de sesión
+    Por lo que sí, ese "String username = EscribirIdentificacion.getText();" pasa la información hasta acá
+    Y si nos damos cuenta, este método es de tipo Customer, no un void*/
     public static Customer get(String username){
-        //Loop through the array
+        //Se hace un loop por el Array por medio del contador
         for(int i = 0; i < counter; i++){
-            //with this, look for the username
+            //Se crea un objeto tipo "customer" (que luego lo cambiaré a asociado) que será equivalente al índice i del Array
             Customer customer = customers[i];
+            //Y se crea una variable tipo String para conseguir el get del ID (que de momento se llama Username)
             String thisUsername = customer.getUsername();
             
-            //if the username is equals to the given username
+            //Si el ID es igual al ID que se escribió en el espacio al intentar iniciar sesión
             if(username.equals(thisUsername)){
-                //return username
+                //Retorna un asociado (que de momento se llama customer )
                 return customer;
             }
         }
+        //Si no se encuentra coincidencias, se retorna null
         return null;
     }
 }

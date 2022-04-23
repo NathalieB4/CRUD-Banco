@@ -1,27 +1,43 @@
 import Codigo.AllCustomers;
 import Codigo.Customer;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.*;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class Inicio extends javax.swing.JPanel {
+    
+    Asociado menuDentroAsociados = new Asociado();
 
-    Registro userpass = new Registro();
-    int amount;
-    //then:
-
-    FileReader lee;
-    BufferedReader lectorNum1;
-    BufferedReader lectorNum2;
 
     public Inicio() {
         initComponents();
+        //Hay un panel nuevo que cubre todo el menú de iniciar sesión, por lo que este se pone invisible hasta ser necesitado
+        contenido.setVisible(false);
+        /*En caso de que se cierre el programa, y ya haya un archivo de texto con información y al mismo tiempo
+        necesitar hacer inicio de sesión inmediatamente,
+        con esta línea de código, nos encargamos de que todo lo que está en el archivo de texto, al Array
+        */
+        AllCustomers.load();
     }
+    
+    //Método para configurar el JPanel que luego aparecerá
+    private void ShowPanel(JPanel p){
+        p.setSize(570, 470);
+        p.setLocation(0, 0);
 
+        contenido.removeAll();
+        contenido.add(p, BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        contenido = new javax.swing.JPanel();
         TextoPrincipal = new javax.swing.JLabel();
         TextoClave = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
@@ -34,6 +50,21 @@ public class Inicio extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        contenido.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout contenidoLayout = new javax.swing.GroupLayout(contenido);
+        contenido.setLayout(contenidoLayout);
+        contenidoLayout.setHorizontalGroup(
+            contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 570, Short.MAX_VALUE)
+        );
+        contenidoLayout.setVerticalGroup(
+            contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 470, Short.MAX_VALUE)
+        );
+
+        add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 470));
 
         TextoPrincipal.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         TextoPrincipal.setForeground(new java.awt.Color(0, 0, 0));
@@ -117,10 +148,12 @@ public class Inicio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EscribirClaveMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EscribirClaveMousePressed
+        //Si el texto en el espacio para escribir la clave es igual al predeterminado, se vacía y se pone la fuente color negro
         if (EscribirClave.getText().equals("Ingrese su Clave")) {
             EscribirClave.setText("");
             EscribirClave.setForeground(Color.black);
         }
+        //Si se dejó el espacio para escribir la ID está vacío se rellena con el texto por defecto
         if (EscribirIdentificacion.getText().isEmpty()) {
             EscribirIdentificacion.setText("Ingrese su Identificación");
             EscribirIdentificacion.setForeground(new Color(102, 102, 102));
@@ -128,10 +161,12 @@ public class Inicio extends javax.swing.JPanel {
     }//GEN-LAST:event_EscribirClaveMousePressed
 
     private void EscribirIdentificacionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EscribirIdentificacionMousePressed
+        //Si el texto en el espacio para escribir la ID es igual al predeterminado, se vacía y se pone la fuente color negro
         if (EscribirIdentificacion.getText().equals("Ingrese su Identificación")) {
             EscribirIdentificacion.setText("");
             EscribirIdentificacion.setForeground(Color.black);
         }
+        //Si se dejó el espacio para escribir la clave está vacío se rellena con el texto por defecto
         if (EscribirClave.getText().isEmpty()) {
             EscribirClave.setText("Ingrese su Clave");
             EscribirClave.setForeground(new Color(102, 102, 102));
@@ -142,18 +177,37 @@ public class Inicio extends javax.swing.JPanel {
         String username = EscribirIdentificacion.getText();
         String password = EscribirClave.getText();
         
+        //Se llama al método get creado en la clase de AllCustomers
         Customer customer = AllCustomers.get(username);
         
+        //Si lo que retorna el método de get es igual a null
         if(customer == null){
+            //Se le indica a la persona que el mensaje a continuación
             JOptionPane.showMessageDialog(null, "Identificación o contraseña incorrectas");
+            //Se vuelven a colocar los espacios para escribir con su texto por defecto
             EscribirIdentificacion.setText("Ingrese su Identificación");
             EscribirClave.setText("Ingrese su Clave");
         }else{
+            //Si no retorna null, se verifica ahora la clave por medio del getter
             String verifyPass = customer.getPassword();
+            
+            /*Si la información dentro de la variable password que se creó arriba que se creó arriba
+            es igual que lo que se obtiene del getter
+            */ 
             if(password.equals(verifyPass)){
-               //move to the another JPanel, login successful
+               //Se enseña al panel del menú de asociados ya habiendo iniciado la sesión
+               ShowPanel(menuDentroAsociados);
+               //El botón para ingresar se vuelve invisible (esto porque me seguía apareciendo ahí)
+               FondoInicio.setVisible(false);
+               loginBtn.setVisible(false);
+               //Y se hace visible el panel en blanco que agregué para utilizarlo como "pizarra" para el nuevo menú
+               contenido.setVisible(true);
+               
+            //De no ser igual la información escrita por la persona en password con el getter   
             }else{
+                //Se vuelve a indicar que la identificación o contraseña es incorrecta
                 JOptionPane.showMessageDialog(null, "Identificación o contraseña incorrectas");
+                //Se vuelve a colocar los espacios para escribir con su texto por defecto
                 EscribirIdentificacion.setText("Ingrese su Identificación");
                 EscribirClave.setText("Ingrese su Clave");
             }
@@ -161,10 +215,12 @@ public class Inicio extends javax.swing.JPanel {
     }//GEN-LAST:event_loginBtnMouseClicked
 
     private void loginBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseEntered
+        //Solamente es línea de código para cambiar el color del botón para ingresar cuando se entra
         FondoInicio.setBackground(new Color(0, 204, 204));
     }//GEN-LAST:event_loginBtnMouseEntered
 
     private void loginBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseExited
+        //Solamente es línea de código para cambiar el color del botón para ingresar cuando se sale
         FondoInicio.setBackground(new Color(0, 153, 153));
     }//GEN-LAST:event_loginBtnMouseExited
 
@@ -176,6 +232,7 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JLabel TextoClave;
     private javax.swing.JLabel TextoIdentificacion;
     private javax.swing.JLabel TextoPrincipal;
+    private javax.swing.JPanel contenido;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel loginBtn;
