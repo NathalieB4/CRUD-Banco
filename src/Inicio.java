@@ -15,6 +15,9 @@ public class Inicio extends javax.swing.JPanel {
         initComponents();
         //Hay un panel nuevo que cubre todo el menú de iniciar sesión, por lo que este se pone invisible hasta ser necesitado
         contenido.setVisible(false);
+        //El botón de salir será invisible hasta que el contenido (la línea de código arriba de este texto) sea visible
+        salirFondo.setVisible(false);
+        salirBoton.setVisible(false);
         /*En caso de que se cierre el programa, y ya haya un archivo de texto con información y al mismo tiempo
         necesitar hacer inicio de sesión inmediatamente,
         con esta línea de código, nos encargamos de que todo lo que está en el archivo de texto, al Array
@@ -24,7 +27,7 @@ public class Inicio extends javax.swing.JPanel {
     
     //Método para configurar el JPanel que luego aparecerá
     private void ShowPanel(JPanel p){
-        p.setSize(570, 470);
+        p.setSize(570, 440);
         p.setLocation(0, 0);
 
         contenido.removeAll();
@@ -37,6 +40,8 @@ public class Inicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        salirFondo = new javax.swing.JPanel();
+        salirBoton = new javax.swing.JLabel();
         contenido = new javax.swing.JPanel();
         TextoPrincipal = new javax.swing.JLabel();
         TextoClave = new javax.swing.JLabel();
@@ -51,6 +56,39 @@ public class Inicio extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        salirFondo.setBackground(new java.awt.Color(0, 102, 102));
+
+        salirBoton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        salirBoton.setForeground(new java.awt.Color(255, 255, 255));
+        salirBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        salirBoton.setText("Salir");
+        salirBoton.setToolTipText("Salir al menú de Inicio de Sesión");
+        salirBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salirBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirBotonMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                salirBotonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                salirBotonMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout salirFondoLayout = new javax.swing.GroupLayout(salirFondo);
+        salirFondo.setLayout(salirFondoLayout);
+        salirFondoLayout.setHorizontalGroup(
+            salirFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(salirBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
+        );
+        salirFondoLayout.setVerticalGroup(
+            salirFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(salirBoton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        add(salirFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 430, 70, 30));
+
         contenido.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout contenidoLayout = new javax.swing.GroupLayout(contenido);
@@ -61,10 +99,10 @@ public class Inicio extends javax.swing.JPanel {
         );
         contenidoLayout.setVerticalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 440, Short.MAX_VALUE)
         );
 
-        add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 470));
+        add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 440));
 
         TextoPrincipal.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         TextoPrincipal.setForeground(new java.awt.Color(0, 0, 0));
@@ -202,6 +240,8 @@ public class Inicio extends javax.swing.JPanel {
                loginBtn.setVisible(false);
                //Y se hace visible el panel en blanco que agregué para utilizarlo como "pizarra" para el nuevo menú
                contenido.setVisible(true);
+               salirFondo.setVisible(true);
+               salirBoton.setVisible(true);
                
             //De no ser igual la información escrita por la persona en password con el getter   
             }else{
@@ -212,6 +252,12 @@ public class Inicio extends javax.swing.JPanel {
                 EscribirClave.setText("Ingrese su Clave");
             }
         }
+        
+        //En cualquiera de los dos casos (si el inicio de sesión es exitoso o no) se pondrán por defecto los textos por defecto
+        EscribirIdentificacion.setText("Ingrese su Identificación");
+        EscribirIdentificacion.setForeground(new Color(102, 102, 102));
+        EscribirClave.setText("Ingrese su Clave");
+        EscribirClave.setForeground(new Color(102, 102, 102));
     }//GEN-LAST:event_loginBtnMouseClicked
 
     private void loginBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseEntered
@@ -223,6 +269,28 @@ public class Inicio extends javax.swing.JPanel {
         //Solamente es línea de código para cambiar el color del botón para ingresar cuando se sale
         FondoInicio.setBackground(new Color(0, 153, 153));
     }//GEN-LAST:event_loginBtnMouseExited
+
+    private void salirBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirBotonMouseEntered
+        //Solamente es línea de código para cambiar el color del botón para salir cuando se entra
+        salirFondo.setBackground(new Color(0, 153, 153));
+    }//GEN-LAST:event_salirBotonMouseEntered
+
+    private void salirBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirBotonMouseExited
+        //Solamente es línea de código para cambiar el color del botón para salir cuando se sale
+        salirFondo.setBackground(new Color(0, 102, 102));
+    }//GEN-LAST:event_salirBotonMouseExited
+
+    private void salirBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirBotonMouseClicked
+        //En caso de darle click al botón de salir, se pondrán invisibles la pizarra y el propio botón de salir
+        contenido.setVisible(false);
+        salirFondo.setVisible(false);
+        salirBoton.setVisible(false);
+        
+        //Vuelve a ponerse visible el botón de Inicio
+        FondoInicio.setVisible(true);
+        loginBtn.setVisible(true);
+        
+    }//GEN-LAST:event_salirBotonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -236,5 +304,7 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel loginBtn;
+    private javax.swing.JLabel salirBoton;
+    private javax.swing.JPanel salirFondo;
     // End of variables declaration//GEN-END:variables
 }
