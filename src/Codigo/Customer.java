@@ -120,4 +120,14 @@ public class Customer {
         printer.println(balance);
         printer.println(loans);
     }
+    
+    public void afterDelete(){
+        name = null;
+        tel = null;
+        email = null;
+        username = null;
+        password = null;
+        balance = null;
+        loans = null;
+    }
 }

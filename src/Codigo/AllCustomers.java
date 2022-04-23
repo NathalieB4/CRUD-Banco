@@ -105,4 +105,36 @@ public class AllCustomers {
         //Si no se encuentra coincidencias, se retorna null
         return null;
     }
+    
+    //Método para eliminar un asociado
+    public static void delete(String username){
+        //Se hace un loop por el Array por medio del contador
+        for(int i = 0; i < counter; i++){
+            //Se encuentra el índice del Array
+            Customer customer = customers[i];
+            //Llamamos al getter del ID
+            String thisUsername = customer.getUsername();
+            //Si el ID que ingresaron es igual al ID que se consiguió por el getter, se elimina el asociado
+            if(username.equals(thisUsername)){
+               //Se crea la variable para conseguir el último objeto almacenado en el Array para así moverlo
+               Customer lastCustomer = customers[counter - 1];
+               /*El hueco en el array que se hace al eliminar un elemento, se llenará moviendo la última cosa
+               que esté almacenada en el arreglo al hueco. 
+               */
+               customers[i] = lastCustomer;
+               //Se le baja un número al contador para que actualice cuántos asociados hay registrados
+               counter--;
+               //Se guarda en el archivo de texto el cambio
+               AllCustomers.save();
+               //Por si acaso, todos los valores de ese usuario se vuelven null
+               customer.afterDelete();
+               //Se retorna para salir del método
+               return;
+            }
+            /* Nota extra, diferencia entre un break; y un return; (así solo)
+            -> break es para romper un loop
+            -> return es para salir de un método
+            */
+        }
+    }
 }
