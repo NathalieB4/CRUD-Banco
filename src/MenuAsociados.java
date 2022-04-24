@@ -249,7 +249,7 @@ public class MenuAsociados extends javax.swing.JFrame {
         BotonPrincipal.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         BotonPrincipal.setForeground(new java.awt.Color(0, 0, 0));
         BotonPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        BotonPrincipal.setText("Menú Principal");
+        BotonPrincipal.setText("Pantalla Principal");
         BotonPrincipal.setToolTipText("Menú Principal");
         BotonPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {

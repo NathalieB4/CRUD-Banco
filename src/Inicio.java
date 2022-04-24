@@ -170,7 +170,7 @@ public class Inicio extends javax.swing.JPanel {
             .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        add(FondoInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 150, 50));
+        add(FondoInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 150, 50));
 
         EscribirIdentificacion.setBackground(new java.awt.Color(255, 255, 255));
         EscribirIdentificacion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
