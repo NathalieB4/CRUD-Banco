@@ -12,9 +12,8 @@ public class Asociado {
     private int ahorro;
     private int prestamos;
     private int montoPrestamoDisponible;
-    private int salario;
 
-    public Asociado(String nombre, String tel, String email, String identificacion, String contraseña, int ahorro, int prestamos, int montoPrestamoDisponible, int salario) {
+    public Asociado(String nombre, String tel, String email, String identificacion, String contraseña, int ahorro, int prestamos, int montoPrestamoDisponible) {
         this.nombre = nombre;
         this.tel = tel;
         this.email = email;
@@ -23,7 +22,6 @@ public class Asociado {
         this.ahorro = ahorro;
         this.prestamos = prestamos;
         this.montoPrestamoDisponible = montoPrestamoDisponible;
-        this.salario = salario;
     }
     
     public String getNombre() {
@@ -98,14 +96,6 @@ public class Asociado {
         TodosAsociados.guardar();
     }
 
-    public int getSalario() {
-        return salario;
-    }
-
-    public void setSalario(int salario) {
-        this.salario = salario;
-        TodosAsociados.guardar();
-    } 
     
     //Método para leer el archivo de texto y luego escribir la información en el Array
     public static Asociado leer(BufferedReader lector){
@@ -118,7 +108,6 @@ public class Asociado {
             String ahorroString = lector.readLine();
             String prestamosString = lector.readLine();
             String montoPrestamo = lector.readLine();
-            String salarioString = lector.readLine();
             
             if(nombre == null || tel == null || email == null || identificacion == null || contraseña == null || ahorroString == null || prestamosString == null || montoPrestamo == null){
                 return null;
@@ -127,8 +116,7 @@ public class Asociado {
             int ahorro = Integer.parseInt(ahorroString);
             int prestamos = Integer.parseInt(prestamosString);
             int montoPrestamoDisponible = Integer.parseInt(prestamosString);
-            int salario = Integer.parseInt(salarioString);
-            Asociado asociado = new Asociado(nombre, tel, email, identificacion, contraseña, ahorro, prestamos, montoPrestamoDisponible, salario);
+            Asociado asociado = new Asociado(nombre, tel, email, identificacion, contraseña, ahorro, prestamos, montoPrestamoDisponible);
             return asociado;
             
         } catch (IOException ex) {
@@ -148,7 +136,6 @@ public class Asociado {
         imprimir.println(ahorro);
         imprimir.println(prestamos);
         imprimir.println(montoPrestamoDisponible);
-        imprimir.println(salario);
     }
     
     //Este método vuelve nulos los Strings y se pone el valor mínimo en el integer
@@ -161,6 +148,5 @@ public class Asociado {
         ahorro = Integer.MIN_VALUE;
         prestamos = Integer.MIN_VALUE;
         montoPrestamoDisponible = Integer.MIN_VALUE;
-        salario = Integer.MIN_VALUE;
     }
 }

@@ -25,7 +25,7 @@ public class Registro extends javax.swing.JPanel {
         escribirNombre = new javax.swing.JTextField();
         escribirPuesto = new javax.swing.JTextField();
         FondoGuardar = new javax.swing.JPanel();
-        saveBtn = new javax.swing.JLabel();
+        guardarBoton = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -33,8 +33,7 @@ public class Registro extends javax.swing.JPanel {
         jSeparator5 = new javax.swing.JSeparator();
         escribirTel = new javax.swing.JTextField();
         escribirEmail = new javax.swing.JTextField();
-        verFondo = new javax.swing.JPanel();
-        verBoton = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,7 +50,7 @@ public class Registro extends javax.swing.JPanel {
 
         TextoPuesto.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TextoPuesto.setForeground(new java.awt.Color(0, 0, 0));
-        TextoPuesto.setText("Puesto de trabajo:");
+        TextoPuesto.setText("Ahorro:");
         add(TextoPuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, -1, -1));
 
         TextoNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -96,7 +95,7 @@ public class Registro extends javax.swing.JPanel {
         escribirPuesto.setBackground(new java.awt.Color(255, 255, 255));
         escribirPuesto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         escribirPuesto.setForeground(new java.awt.Color(102, 102, 102));
-        escribirPuesto.setText("Ingrese su puesto de trabajo");
+        escribirPuesto.setText("Ingrese un ahorro inicial");
         escribirPuesto.setBorder(null);
         escribirPuesto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -107,21 +106,21 @@ public class Registro extends javax.swing.JPanel {
 
         FondoGuardar.setBackground(new java.awt.Color(0, 153, 153));
 
-        saveBtn.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        saveBtn.setForeground(new java.awt.Color(0, 0, 0));
-        saveBtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        saveBtn.setText("GUARDAR");
-        saveBtn.setToolTipText("Guardar información");
-        saveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        saveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        guardarBoton.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        guardarBoton.setForeground(new java.awt.Color(0, 0, 0));
+        guardarBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        guardarBoton.setText("GUARDAR");
+        guardarBoton.setToolTipText("Guardar información");
+        guardarBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardarBoton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                saveBtnMouseClicked(evt);
+                guardarBotonMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                saveBtnMouseEntered(evt);
+                guardarBotonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                saveBtnMouseExited(evt);
+                guardarBotonMouseExited(evt);
             }
         });
 
@@ -129,11 +128,11 @@ public class Registro extends javax.swing.JPanel {
         FondoGuardar.setLayout(FondoGuardarLayout);
         FondoGuardarLayout.setHorizontalGroup(
             FondoGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(saveBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+            .addComponent(guardarBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
         );
         FondoGuardarLayout.setVerticalGroup(
             FondoGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(saveBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(guardarBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         add(FondoGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 150, 50));
@@ -188,40 +187,13 @@ public class Registro extends javax.swing.JPanel {
         });
         add(escribirEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 230, -1));
 
-        verFondo.setBackground(new java.awt.Color(0, 102, 102));
-
-        verBoton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        verBoton.setForeground(new java.awt.Color(255, 255, 255));
-        verBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        verBoton.setText("VER PUESTOS");
-        verBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        verBoton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                verBotonMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                verBotonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                verBotonMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout verFondoLayout = new javax.swing.GroupLayout(verFondo);
-        verFondo.setLayout(verFondoLayout);
-        verFondoLayout.setHorizontalGroup(
-            verFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(verBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-        );
-        verFondoLayout.setVerticalGroup(
-            verFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(verBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        add(verFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 120, 40));
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setText("* Debe ser mayor que 10,000 CRC");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 200, 20));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseClicked
+    private void guardarBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBotonMouseClicked
         //Se declaran las variables
         String nombre = escribirNombre.getText();
         String tel = escribirTel.getText();
@@ -233,17 +205,11 @@ public class Registro extends javax.swing.JPanel {
         String ahorroString = String.valueOf(ahorro);
         int prestamos = 0;
         int montoPrestamoDisponible = ahorro;
-        int salario = Integer.parseInt(escribirPuesto.getText());
-        
-        if(salario == 1){
-           
-        }
-        
         
         int ahorroMin = 10000;
 
         //Se llama al constructor para guardar la información
-        Asociado customer = new Asociado(nombre, tel, email, identificacion, contraseña, ahorro, prestamos, montoPrestamoDisponible, salario);
+        Asociado customer = new Asociado(nombre, tel, email, identificacion, contraseña, ahorro, prestamos, montoPrestamoDisponible);
         Asociado verificarID = TodosAsociados.get(identificacion);
 
         //Se verifican que no se queden espacios en blanco o con textos por defecto
@@ -286,17 +252,17 @@ public class Registro extends javax.swing.JPanel {
         }else{
             JOptionPane.showMessageDialog(null, "La identificación ya se encuentra registrada");
         }
-    }//GEN-LAST:event_saveBtnMouseClicked
+    }//GEN-LAST:event_guardarBotonMouseClicked
 
-    private void saveBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseEntered
+    private void guardarBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBotonMouseEntered
         //Se cambia el color cuando el mouse entra
         FondoGuardar.setBackground(new Color(0, 204, 204));
-    }//GEN-LAST:event_saveBtnMouseEntered
+    }//GEN-LAST:event_guardarBotonMouseEntered
 
-    private void saveBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseExited
+    private void guardarBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBotonMouseExited
         //Se cambia el color cuando el mouse sale
         FondoGuardar.setBackground(new Color(0, 153, 153));
-    }//GEN-LAST:event_saveBtnMouseExited
+    }//GEN-LAST:event_guardarBotonMouseExited
 
     private void escribirNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_escribirNombreMousePressed
         /*Se verifica si el texto que será manipulado tiene el texto por defecto, en dado caso, se borra el mensaje
@@ -428,18 +394,6 @@ public class Registro extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_escribirEmailMousePressed
 
-    private void verBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verBotonMouseEntered
-        verFondo.setBackground(new Color(0, 153, 153));
-    }//GEN-LAST:event_verBotonMouseEntered
-
-    private void verBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verBotonMouseExited
-        verFondo.setBackground(new Color(0, 102, 102));
-    }//GEN-LAST:event_verBotonMouseExited
-
-    private void verBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verBotonMouseClicked
-        JOptionPane.showMessageDialog(null, "Puestos de los asociados en la Empresa: \n");
-    }//GEN-LAST:event_verBotonMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoGuardar;
@@ -454,13 +408,12 @@ public class Registro extends javax.swing.JPanel {
     private javax.swing.JTextField escribirNombre;
     private javax.swing.JTextField escribirPuesto;
     private javax.swing.JTextField escribirTel;
+    private javax.swing.JLabel guardarBoton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JLabel saveBtn;
-    private javax.swing.JLabel verBoton;
-    private javax.swing.JPanel verFondo;
     // End of variables declaration//GEN-END:variables
 }
