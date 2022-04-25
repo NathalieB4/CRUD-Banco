@@ -86,7 +86,7 @@
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ingrese su Clave"/>
-        <Property name="toolTipText" type="java.lang.String" value="Ingrese su Clave"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -112,7 +112,7 @@
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Ingrese su Identificaci&#xf3;n"/>
-        <Property name="toolTipText" type="java.lang.String" value="Ingrese su Identificaci&#xf3;n"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>

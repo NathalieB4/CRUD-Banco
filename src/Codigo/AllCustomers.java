@@ -1,15 +1,16 @@
 package Codigo;
 
 import java.io.*;
+import javax.swing.JList;
 
 public class AllCustomers {
     
     //Se crea el Array junto con su contador
     private static Customer[] customers = new Customer[20];
     private static int counter = 0;
-
+    
     static {
-
+        AllCustomers.load();
     }
 
     public static void customer() {
@@ -32,10 +33,10 @@ public class AllCustomers {
     }
     
     //Método para ya pasar la información del archivo al Array
-    public static void load() {
+    private static void load() {
         try {
             //Se crea al lector y lee el arhivo
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\BaseDatosProyecto\\Customer.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("C:\\Database\\Customers.txt"));
             //Se pone el contador en 0 porque el Array debe estar vacío para poder pasar toda la información
             counter = 0;
             
@@ -48,7 +49,7 @@ public class AllCustomers {
             //Se cierra el archivo
             reader.close();
         } catch (IOException ex) {
-            System.out.println(ex);
+            System.out.println(ex + "the error is here");
         }
     }
     
@@ -68,9 +69,10 @@ public class AllCustomers {
     
     //Método para guardar el Array en el archivo de texto
     public static void save() {
+        new File("C:\\Database").mkdirs();
         try {
             //Se abre el archivo con el "printer"
-            PrintWriter printer = new PrintWriter("C:\\BaseDatosProyecto\\Customer.txt");
+            PrintWriter printer = new PrintWriter("C:\\Database\\Customers.txt");
             
             //Por cada cosa que haya en el Array
             for (int i = 0; i < counter; i++) {
@@ -81,7 +83,7 @@ public class AllCustomers {
             //Se cierra el archivo
             printer.close();
         } catch (FileNotFoundException ex) {
-            System.out.println(ex);
+            System.out.println(ex + "hi, the error is here");
         }
     }
     
@@ -136,5 +138,9 @@ public class AllCustomers {
             -> return es para salir de un método
             */
         }
+    }
+    
+    public static void dividends(JList listDividends){
+        
     }
 }

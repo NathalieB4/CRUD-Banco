@@ -1,12 +1,21 @@
 
+import Codigo.AllCustomers;
+import static Codigo.AllCustomers.customer;
+import Codigo.Customer;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 
 
 public class Perfil extends javax.swing.JPanel {
 
-    public Perfil() {
+    Paneles paneles;
+
+    public Perfil(Paneles paneles) {
+        super();
         initComponents();
+        this.paneles = paneles;
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -35,12 +44,12 @@ public class Perfil extends javax.swing.JPanel {
         TextoPrincipal.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         TextoPrincipal.setForeground(new java.awt.Color(0, 0, 0));
         TextoPrincipal.setText("EDITE SU INFORMACIÓN");
-        add(TextoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+        add(TextoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
 
         textoTelefono.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         textoTelefono.setForeground(new java.awt.Color(0, 0, 0));
         textoTelefono.setText("Teléfono:");
-        add(textoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        add(textoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         EscribirNombre.setBackground(new java.awt.Color(255, 255, 255));
         EscribirNombre.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -52,12 +61,12 @@ public class Perfil extends javax.swing.JPanel {
                 EscribirNombreMousePressed(evt);
             }
         });
-        add(EscribirNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 200, -1));
+        add(EscribirNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 200, -1));
 
         textoNombre.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         textoNombre.setForeground(new java.awt.Color(0, 0, 0));
         textoNombre.setText("Nombre:");
-        add(textoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
+        add(textoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         EscribirTelefono.setBackground(new java.awt.Color(255, 255, 255));
         EscribirTelefono.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -69,12 +78,12 @@ public class Perfil extends javax.swing.JPanel {
                 EscribirTelefonoMousePressed(evt);
             }
         });
-        add(EscribirTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 200, -1));
+        add(EscribirTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 200, -1));
 
         textoClave.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         textoClave.setForeground(new java.awt.Color(0, 0, 0));
         textoClave.setText("Clave:");
-        add(textoClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, -1, -1));
+        add(textoClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
 
         EscribirCorreo.setBackground(new java.awt.Color(255, 255, 255));
         EscribirCorreo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -86,12 +95,12 @@ public class Perfil extends javax.swing.JPanel {
                 EscribirCorreoMousePressed(evt);
             }
         });
-        add(EscribirCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 200, -1));
+        add(EscribirCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 200, -1));
 
         textoCorreo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         textoCorreo.setForeground(new java.awt.Color(0, 0, 0));
         textoCorreo.setText("Correo:");
-        add(textoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
+        add(textoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
 
         EscribirClave.setBackground(new java.awt.Color(255, 255, 255));
         EscribirClave.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -103,7 +112,7 @@ public class Perfil extends javax.swing.JPanel {
                 EscribirClaveMousePressed(evt);
             }
         });
-        add(EscribirClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 200, -1));
+        add(EscribirClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 260, 200, -1));
 
         guardarFondo.setBackground(new java.awt.Color(0, 153, 153));
         guardarFondo.setForeground(new java.awt.Color(0, 153, 153));
@@ -136,19 +145,19 @@ public class Perfil extends javax.swing.JPanel {
             .addComponent(guardarBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        add(guardarFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 110, 40));
+        add(guardarFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 110, 40));
 
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 200, 30));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 200, 30));
 
         jSeparator2.setForeground(new java.awt.Color(153, 153, 153));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 200, 30));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 200, 30));
 
         jSeparator3.setForeground(new java.awt.Color(153, 153, 153));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 200, 30));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 200, 30));
 
         jSeparator4.setForeground(new java.awt.Color(153, 153, 153));
-        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 200, 30));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 200, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBotonMouseEntered
@@ -160,11 +169,37 @@ public class Perfil extends javax.swing.JPanel {
     }//GEN-LAST:event_guardarBotonMouseExited
 
     private void guardarBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBotonMouseClicked
+        Customer customer = paneles.getInicioSesion().getLoggedIn();
+        
         String name = EscribirNombre.getText();
         String tel = EscribirTelefono.getText();
         String email = EscribirCorreo.getText();
         String password = EscribirClave.getText();
-        //no terminado
+        String username = "";
+        String balance = "";
+        String loans = "";
+        
+        if(!name.equals("Ingrese un nuevo Nombre") && !name.isEmpty() && !tel.equals("Ingrese un nuevo Teléfono") && !tel.isEmpty()){
+            if(!email.equals("Ingrese un nuevo Correo") && !email.isEmpty() && !password.equals("Ingrese una nueva Clave") && !password.isEmpty()){
+                customer.setName(name);
+                customer.setTel(tel);
+                customer.setEmail(email);
+                customer.setPassword(password);
+                
+                EscribirNombre.setText("Ingrese un nuevo Nombre");
+                EscribirTelefono.setText("Ingrese un nuevo Teléfono");
+                EscribirCorreo.setText("Ingrese un nuevo Correo");
+                EscribirClave.setText("Ingrese una nueva Clave");
+                EscribirNombre.setForeground(new Color(102, 102, 102));
+                EscribirTelefono.setForeground(new Color(102, 102, 102));
+                EscribirCorreo.setForeground(new Color(102, 102, 102));
+                EscribirClave.setForeground(new Color(102, 102 ,102));
+            }else{
+                JOptionPane.showMessageDialog(null, "Por favor, no deje espacios en blanco");                
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Por favor, no deje espacios en blanco");
+        }
     }//GEN-LAST:event_guardarBotonMouseClicked
 
     private void EscribirNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EscribirNombreMousePressed

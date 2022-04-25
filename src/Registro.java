@@ -1,3 +1,4 @@
+
 import Codigo.AllCustomers;
 import static Codigo.AllCustomers.customer;
 import Codigo.Customer;
@@ -7,9 +8,10 @@ import java.io.*;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.JOptionPane;
 
-public class Registro extends javax.swing.JPanel {    
-    
-    public Registro() {
+public class Registro extends javax.swing.JPanel {
+
+    public Registro(Paneles paneles) {
+        super();
         initComponents();
     }
 
@@ -203,51 +205,58 @@ public class Registro extends javax.swing.JPanel {
         String username = usernameField.getText();
         int pass = ThreadLocalRandom.current().nextInt(100, 999 + 1);
         String password = String.valueOf(pass);
-        String balance = balanceField.getText();
-        int ahorro = 0;
-        
-        /*Se hace el try/catch para evitar el error que ocurre al darle un valor tipo int a un String
-        de esta forma, al convertirlo no dará más errores
-        */
-        try{
-        ahorro = Integer.parseInt(balance);
-        }catch(java.lang.NumberFormatException ne){
-            System.out.println(ne);
-        }
-        
+        int balance = Integer.parseInt(balanceField.getText());
+        String ahorro = String.valueOf(balance);
+
         int ahorroMin = 10000;
-        
+
         //Esta igual se sigue declarando porque el constructor lo requiere, se puede dejar vacío y luego rellenarlo
-        String loans = "";
+        int loans = 0;
         //Para hacer update de la información de una cosa en específico es customer.setLoans(loans);
-        
+
         //Se llama al constructor para guardar la información
         Customer customer = new Customer(name, tel, email, username, password, balance, loans);
-        
+        Customer verificarID = AllCustomers.get(username);
+
         //Se verifican que no se queden espacios en blanco o con textos por defecto
-        if(!name.equals("Ingrese su Nombre") && !name.isEmpty() && !tel.equals("Ingrese su número de Teléfono") && !tel.isEmpty()){
-            if(!email.equals("Ingrese su dirección de Correo") && !email.isEmpty() && !username.equals("Ingrese su Identificación") && !username.isEmpty()){
-                if(!balance.equals("Ingrese un monto de ahorro inicial") && !balance.isEmpty()){
-                    //Si el ahorro es menor que ahorroMin
-                    if(ahorro < ahorroMin){
-                        //Se le dice que el monto debe ser mayor que 10 mil
-                        JOptionPane.showMessageDialog(null, "El monto del ahorro debe ser mayor que 10,000 CRC");
-                    }else{
-                        //Si el ahorro es mayor que ahorroMin, se termina de realizar el registro
-                        //Y se llaman a los métodos para agregar la información al Array y al archivo de texto
-                        AllCustomers.add(customer);
-                        AllCustomers.save();
-                        
-                        JOptionPane.showMessageDialog(null, "El registro ha sido exitoso \nSu clave como Asociado será: " + pass);
+        if (verificarID == null) {
+            if (!name.equals("Ingrese su Nombre") && !name.isEmpty() && !tel.equals("Ingrese su número de Teléfono") && !tel.isEmpty()) {
+                if (!email.equals("Ingrese su dirección de Correo") && !email.isEmpty() && !username.equals("Ingrese su Identificación") && !username.isEmpty()) {
+                    if (!ahorro.equals("Ingrese un monto de ahorro inicial") && !ahorro.isEmpty()) {
+                        //Si el ahorro es menor que ahorroMin
+                        if (balance < ahorroMin) {
+                            //Se le dice que el monto debe ser mayor que 10 mil
+                            JOptionPane.showMessageDialog(null, "El monto del ahorro debe ser mayor que 10,000 CRC");
+                        } else {
+                            //Si el ahorro es mayor que ahorroMin, se termina de realizar el registro
+                            //Y se llaman a los métodos para agregar la información al Array y al archivo de texto
+                            AllCustomers.add(customer);
+                            AllCustomers.save();
+                            JOptionPane.showMessageDialog(null, "El registro ha sido exitoso \nSu clave como Asociado será: " + pass);
+
+                            //Se vuelven a poner los textos por defecto junto con el color
+                            usernameField.setText("Ingrese su Identificación");
+                            balanceField.setText("Ingrese un monto de ahorro inicial");
+                            telField.setText("Ingrese su número de Teléfono");
+                            emailField.setText("Ingrese su dirección de Correo");
+                            nameField.setText("Ingrese su Nombre");
+                            usernameField.setForeground(new Color(102, 102, 102));
+                            balanceField.setForeground(new Color(102, 102, 102));
+                            telField.setForeground(new Color(102, 102, 102));
+                            emailField.setForeground(new Color(102, 102, 102));
+                            nameField.setForeground(new Color(102, 102, 102));
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Por favor no deje ningún espacio sin rellenar");
                     }
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(null, "Por favor no deje ningún espacio sin rellenar");
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Por favor no deje ningún espacio sin rellenar");
             }
         }else{
-            JOptionPane.showMessageDialog(null, "Por favor no deje ningún espacio sin rellenar");
+            JOptionPane.showMessageDialog(null, "La identificación ya se encuentra registrada");
         }
     }//GEN-LAST:event_saveBtnMouseClicked
 
@@ -277,13 +286,13 @@ public class Registro extends javax.swing.JPanel {
             balanceField.setText("Ingrese un monto de ahorro inicial");
             balanceField.setForeground(new Color(102, 102, 102));
         }
-        if(telField.getText().isEmpty()){
-           telField.setText("Ingrese su número de Teléfono");
-           telField.setForeground(new Color(102, 102, 102));
+        if (telField.getText().isEmpty()) {
+            telField.setText("Ingrese su número de Teléfono");
+            telField.setForeground(new Color(102, 102, 102));
         }
-        if(emailField.getText().isEmpty()){
-           emailField.setText("Ingrese su dirección de Correo");
-           emailField.setForeground(new Color(102, 102, 102));
+        if (emailField.getText().isEmpty()) {
+            emailField.setText("Ingrese su dirección de Correo");
+            emailField.setForeground(new Color(102, 102, 102));
         }
     }//GEN-LAST:event_nameFieldMousePressed
 
@@ -303,13 +312,13 @@ public class Registro extends javax.swing.JPanel {
             balanceField.setText("Ingrese un monto de ahorro inicial");
             balanceField.setForeground(new Color(102, 102, 102));
         }
-        if(telField.getText().isEmpty()){
-           telField.setText("Ingrese su número de Teléfono");
-           telField.setForeground(new Color(102, 102, 102));
+        if (telField.getText().isEmpty()) {
+            telField.setText("Ingrese su número de Teléfono");
+            telField.setForeground(new Color(102, 102, 102));
         }
-        if(emailField.getText().isEmpty()){
-           emailField.setText("Ingrese su dirección de Correo");
-           emailField.setForeground(new Color(102, 102, 102));
+        if (emailField.getText().isEmpty()) {
+            emailField.setText("Ingrese su dirección de Correo");
+            emailField.setForeground(new Color(102, 102, 102));
         }
     }//GEN-LAST:event_usernameFieldMousePressed
 
@@ -329,22 +338,22 @@ public class Registro extends javax.swing.JPanel {
             usernameField.setText("Ingrese su Identificación");
             usernameField.setForeground(new Color(102, 102, 102));
         }
-        if(telField.getText().isEmpty()){
-           telField.setText("Ingrese su número de Teléfono");
-           telField.setForeground(new Color(102, 102, 102));
+        if (telField.getText().isEmpty()) {
+            telField.setText("Ingrese su número de Teléfono");
+            telField.setForeground(new Color(102, 102, 102));
         }
-        if(emailField.getText().isEmpty()){
-           emailField.setText("Ingrese su dirección de Correo");
-           emailField.setForeground(new Color(102, 102, 102));
+        if (emailField.getText().isEmpty()) {
+            emailField.setText("Ingrese su dirección de Correo");
+            emailField.setForeground(new Color(102, 102, 102));
         }
     }//GEN-LAST:event_balanceFieldMousePressed
 
     private void telFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_telFieldMousePressed
         /*Se verifica si el texto que será manipulado tiene el texto por defecto, en dado caso, se borra el mensaje
         para que la persona pueda escribir*/
-        if(telField.getText().equals("Ingrese su número de Teléfono")){
-           telField.setText("");
-           telField.setForeground(Color.black);
+        if (telField.getText().equals("Ingrese su número de Teléfono")) {
+            telField.setText("");
+            telField.setForeground(Color.black);
         }
         //En estos otros cuatro se verifica si se dejó algún texto vacío, en dado caso, se rellena con el texto por defecto
         if (nameField.getText().isEmpty()) {
@@ -359,18 +368,18 @@ public class Registro extends javax.swing.JPanel {
             balanceField.setText("Ingrese un monto de ahorro inicial");
             balanceField.setForeground(new Color(102, 102, 102));
         }
-        if(emailField.getText().isEmpty()) {
-           emailField.setText("Ingrese su dirección de Correo");
-           emailField.setForeground(new Color(102, 102, 102));
+        if (emailField.getText().isEmpty()) {
+            emailField.setText("Ingrese su dirección de Correo");
+            emailField.setForeground(new Color(102, 102, 102));
         }
     }//GEN-LAST:event_telFieldMousePressed
 
     private void emailFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailFieldMousePressed
         /*Se verifica si el texto que será manipulado tiene el texto por defecto, en dado caso, se borra el mensaje
         para que la persona pueda escribir*/
-        if(emailField.getText().equals("Ingrese su dirección de Correo")){
-           emailField.setText("");
-           emailField.setForeground(Color.black);
+        if (emailField.getText().equals("Ingrese su dirección de Correo")) {
+            emailField.setText("");
+            emailField.setForeground(Color.black);
         }
         //En estos otros cuatro se verifica si se dejó algún texto vacío, en dado caso, se rellena con el texto por defecto
         if (nameField.getText().isEmpty()) {
@@ -385,9 +394,9 @@ public class Registro extends javax.swing.JPanel {
             balanceField.setText("Ingrese su monto de ahorro inicial");
             balanceField.setForeground(new Color(102, 102, 102));
         }
-        if(telField.getText().isEmpty()){
-           telField.setText("Ingrese su número de Teléfono");
-           telField.setForeground(new Color(102, 102, 102));
+        if (telField.getText().isEmpty()) {
+            telField.setText("Ingrese su número de Teléfono");
+            telField.setForeground(new Color(102, 102, 102));
         }
     }//GEN-LAST:event_emailFieldMousePressed
 

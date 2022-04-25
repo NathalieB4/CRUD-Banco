@@ -6,21 +6,18 @@ import javax.swing.JPanel;
 
 public class MenuAsociados extends javax.swing.JFrame {
     
-    Principal menuPrincipal = new Principal();
-    Registro menuRegistro = new Registro();
-    Inicio menuInicio = new Inicio();
-    Eliminar menuEliminar = new Eliminar();
-    
+    Paneles paneles;
     int xMouse, yMouse;
 
-    public MenuAsociados() {
+    public MenuAsociados(Paneles paneles) {
+        super();
         initComponents();
+        this.paneles = paneles;
         
-        ShowPanel(menuPrincipal);
         this.setLocationRelativeTo(null);
     }
-    
-    private void ShowPanel(JPanel p){
+        
+    public void showPanel(JPanel p){
         p.setSize(570, 470);
         p.setLocation(0, 0);
         
@@ -29,7 +26,7 @@ public class MenuAsociados extends javax.swing.JFrame {
         contenido.revalidate();
         contenido.repaint();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -184,6 +181,7 @@ public class MenuAsociados extends javax.swing.JFrame {
         BotonEliminar.setForeground(new java.awt.Color(0, 0, 0));
         BotonEliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         BotonEliminar.setText("Eliminar Registro");
+        BotonEliminar.setToolTipText("Eliminar Registro");
         BotonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -250,7 +248,7 @@ public class MenuAsociados extends javax.swing.JFrame {
         BotonPrincipal.setForeground(new java.awt.Color(0, 0, 0));
         BotonPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         BotonPrincipal.setText("Pantalla Principal");
-        BotonPrincipal.setToolTipText("Menú Principal");
+        BotonPrincipal.setToolTipText("Pantalla Principal");
         BotonPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotonPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -292,19 +290,27 @@ public class MenuAsociados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonPrincipalMouseClicked
-        ShowPanel(menuPrincipal);
+        MenuAsociados menuAso = paneles.getMenuAso();
+        Principal menuPrin = paneles.getMenuPrincipal();
+        menuAso.showPanel(menuPrin);
     }//GEN-LAST:event_BotonPrincipalMouseClicked
 
     private void BotonRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRegistrarseMouseClicked
-        ShowPanel(menuRegistro);
+        MenuAsociados menuAso = paneles.getMenuAso();
+        Registro registrarse = paneles.getRegistrarse();
+        menuAso.showPanel(registrarse);
     }//GEN-LAST:event_BotonRegistrarseMouseClicked
 
     private void BotonInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonInicioMouseClicked
-        ShowPanel(menuInicio);
+        MenuAsociados menuAso = paneles.getMenuAso();
+        Inicio iniciar = paneles.getInicioSesion();
+        menuAso.showPanel(iniciar);
     }//GEN-LAST:event_BotonInicioMouseClicked
 
     private void BotonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEliminarMouseClicked
-        ShowPanel(menuEliminar);
+        MenuAsociados menuAso = paneles.getMenuAso();
+        Eliminar elimina = paneles.getEliminarAsociado();
+        menuAso.showPanel(elimina);
     }//GEN-LAST:event_BotonEliminarMouseClicked
 
     private void BotonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonSalirMouseClicked
@@ -391,7 +397,7 @@ public class MenuAsociados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuAsociados().setVisible(true);
+                new Paneles();
             }
         });
     }

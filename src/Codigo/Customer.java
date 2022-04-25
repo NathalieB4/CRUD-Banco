@@ -9,10 +9,10 @@ public class Customer {
     private String email;
     private String username;
     private String password;
-    private String balance;
-    private String loans;
+    private int balance;
+    private int loans;
 
-    public Customer(String name, String tel, String email, String username, String password, String balance, String loans) {
+    public Customer(String name, String tel, String email, String username, String password, int balance, int loans) {
         this.name = name;
         this.tel = tel;
         this.email = email;
@@ -67,20 +67,20 @@ public class Customer {
         AllCustomers.save();
     }
 
-    public String getAhorro() {
+    public int getAhorro() {
         return balance;
     }
 
-    public void setAhorro(String balance){
+    public void setAhorro(int balance){
         this.balance = balance;
         AllCustomers.save();
     }
 
-    public String getPrestamos() {
+    public int getPrestamos() {
         return loans;
     }
 
-    public void setPrestamos(String loans){
+    public void setPrestamos(int loans){
         this.loans = loans;
         AllCustomers.save();
     }
@@ -93,14 +93,16 @@ public class Customer {
             String email = reader.readLine();
             String username = reader.readLine();
             String password = reader.readLine();
-            String balance = reader.readLine();
-            String loans = reader.readLine();
+            String bal = reader.readLine();
+            String loan = reader.readLine();
             
-            Customer customer = new Customer(name, tel, email, username, password, balance, loans);
-            
-            if(name == null || tel == null || email == null || username == null || password == null || balance == null || loans == null){
+            if(name == null || tel == null || email == null || username == null || password == null || bal == null || loan == null){
                 return null;
             }
+            
+            int balance = Integer.parseInt(bal);
+            int loans = Integer.parseInt(loan);
+            Customer customer = new Customer(name, tel, email, username, password, balance, loans);
             return customer;
             
         } catch (IOException ex) {
@@ -127,7 +129,7 @@ public class Customer {
         email = null;
         username = null;
         password = null;
-        balance = null;
-        loans = null;
+        balance = Integer.MIN_VALUE;
+        loans = Integer.MIN_VALUE;
     }
 }

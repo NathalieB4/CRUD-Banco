@@ -7,9 +7,9 @@ import javax.swing.JOptionPane;
 
 public class Eliminar extends javax.swing.JPanel {
 
-    public Eliminar() {
+    public Eliminar(Paneles paneles) {
+        super();
         initComponents();
-        AllCustomers.load();
     }
 
     @SuppressWarnings("unchecked")
@@ -49,7 +49,7 @@ public class Eliminar extends javax.swing.JPanel {
         EscribirClave.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         EscribirClave.setForeground(new java.awt.Color(102, 102, 102));
         EscribirClave.setText("Ingrese su Clave");
-        EscribirClave.setToolTipText("Ingrese su Clave");
+        EscribirClave.setToolTipText("");
         EscribirClave.setBorder(null);
         EscribirClave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -62,7 +62,7 @@ public class Eliminar extends javax.swing.JPanel {
         EscribirIdentificacion.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         EscribirIdentificacion.setForeground(new java.awt.Color(102, 102, 102));
         EscribirIdentificacion.setText("Ingrese su Identificación");
-        EscribirIdentificacion.setToolTipText("Ingrese su Identificación");
+        EscribirIdentificacion.setToolTipText("");
         EscribirIdentificacion.setBorder(null);
         EscribirIdentificacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -163,6 +163,8 @@ public class Eliminar extends javax.swing.JPanel {
                 //Se vuelven a poner los textos por defecto
                 EscribirIdentificacion.setText("Ingrese su Identificación");
                 EscribirClave.setText("Ingrese su Clave");
+                EscribirIdentificacion.setForeground(new Color(102, 102, 102));
+                EscribirClave.setForeground(new Color(102, 102, 102)); 
             }else{
                 //Si las contraseñas no son iguales, enseñará un mensaje de error
                 JOptionPane.showMessageDialog(null, "Asociado no registrado");

@@ -1,7 +1,7 @@
 
 public class Principal extends javax.swing.JPanel {
 
-    public Principal() {
+    public Principal(Paneles paneles) {
         initComponents();
     }
 

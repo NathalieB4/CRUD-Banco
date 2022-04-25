@@ -5,12 +5,12 @@ import javax.swing.JPanel;
 
 public class Asociado extends javax.swing.JPanel {
     
-    Perfil menuPerfil = new Perfil();
-    Transacciones menuTransacciones = new Transacciones();
-    Dividendos menuDividendos = new Dividendos();
+    Paneles paneles;
 
-    public Asociado() {
+    public Asociado(Paneles paneles) {
+        super();
         initComponents();
+        this.paneles = paneles;
     }
     
     private void ShowPanel(JPanel p){
@@ -22,7 +22,7 @@ public class Asociado extends javax.swing.JPanel {
         contenido.revalidate();
         contenido.repaint();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -175,15 +175,15 @@ public class Asociado extends javax.swing.JPanel {
     }//GEN-LAST:event_dividendosBotonMouseExited
 
     private void perfilBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_perfilBotonMouseClicked
-        ShowPanel(menuPerfil);
+        ShowPanel(paneles.getMenuPerfil());
     }//GEN-LAST:event_perfilBotonMouseClicked
 
     private void transaccionesBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transaccionesBotonMouseClicked
-        ShowPanel(menuTransacciones);
+        ShowPanel(paneles.getMenuTransacciones());
     }//GEN-LAST:event_transaccionesBotonMouseClicked
 
     private void dividendosBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dividendosBotonMouseClicked
-        ShowPanel(menuDividendos);
+        ShowPanel(paneles.getMenuDividendos());
     }//GEN-LAST:event_dividendosBotonMouseClicked
 
 

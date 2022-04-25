@@ -1,4 +1,5 @@
 import Codigo.AllCustomers;
+import static Codigo.AllCustomers.customer;
 import Codigo.Customer;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -8,10 +9,11 @@ import javax.swing.JPanel;
 
 public class Inicio extends javax.swing.JPanel {
     
-    Asociado menuDentroAsociados = new Asociado();
+    Paneles paneles;
+    private Customer logged;
 
-
-    public Inicio() {
+    public Inicio(Paneles paneles) {
+        super();
         initComponents();
         //Hay un panel nuevo que cubre todo el menú de iniciar sesión, por lo que este se pone invisible hasta ser necesitado
         contenido.setVisible(false);
@@ -22,7 +24,17 @@ public class Inicio extends javax.swing.JPanel {
         necesitar hacer inicio de sesión inmediatamente,
         con esta línea de código, nos encargamos de que todo lo que está en el archivo de texto, al Array
         */
-        AllCustomers.load();
+        this.paneles = paneles;
+    }
+    
+    public Customer getLoggedIn(){
+
+        return logged; 
+    }
+    
+    public void logOut(){
+        logged = null;
+        
     }
     
     //Método para configurar el JPanel que luego aparecerá
@@ -233,8 +245,11 @@ public class Inicio extends javax.swing.JPanel {
             es igual que lo que se obtiene del getter
             */ 
             if(password.equals(verifyPass)){
+               //Se guarda en la variable de instancia
+               logged = customer;
                //Se enseña al panel del menú de asociados ya habiendo iniciado la sesión
-               ShowPanel(menuDentroAsociados);
+               
+               ShowPanel(paneles.getAsociadoMenu());
                //El botón para ingresar se vuelve invisible (esto porque me seguía apareciendo ahí)
                FondoInicio.setVisible(false);
                loginBtn.setVisible(false);
@@ -281,6 +296,7 @@ public class Inicio extends javax.swing.JPanel {
     }//GEN-LAST:event_salirBotonMouseExited
 
     private void salirBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirBotonMouseClicked
+        logOut();
         //En caso de darle click al botón de salir, se pondrán invisibles la pizarra y el propio botón de salir
         contenido.setVisible(false);
         salirFondo.setVisible(false);
