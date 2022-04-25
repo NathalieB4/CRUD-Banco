@@ -3,85 +3,89 @@ package Codigo;
 import java.io.*;
 import javax.swing.JList;
 
-public class AllCustomers {
+public class TodosAsociados {
     
     //Se crea el Array junto con su contador
-    private static Customer[] customers = new Customer[20];
-    private static int counter = 0;
+    private static Asociado[] asociados = new Asociado[20];
+    private static int contador = 0;
     
     static {
-        AllCustomers.load();
+        TodosAsociados.cargar();
     }
 
-    public static void customer() {
+    public static void asociado() {
 
     }
     
     //Método privado que se encargará automáticamente en incrementar el tamaño del Array cuando sea necesario
-    private static void expandSize() {
-        int addSize = 0;
-        addSize = customers.length + 20;
+    private static void expandirTamaño() {
+        int añadirTamaño = 0;
+        añadirTamaño = asociados.length + 20;
 
-        Customer[] customersAdd = new Customer[addSize];
+        Asociado[] asociadosAñadir = new Asociado[añadirTamaño];
 
-        for(int i = 0; i < counter; i++) {
-            customersAdd[i] = customers[i];
+        for(int i = 0; i < contador; i++) {
+            asociadosAñadir[i] = asociados[i];
         }
 
-        customers = customersAdd;
+        asociados = asociadosAñadir;
 
     }
     
     //Método para ya pasar la información del archivo al Array
-    private static void load() {
+    private static void cargar() {
         try {
             //Se crea al lector y lee el arhivo
-            BufferedReader reader = new BufferedReader(new FileReader("C:\\Database\\Customers.txt"));
+            BufferedReader lector = new BufferedReader(new FileReader("C:\\Database\\Customers.txt"));
             //Se pone el contador en 0 porque el Array debe estar vacío para poder pasar toda la información
-            counter = 0;
+            contador = 0;
             
-            Customer customer;
-            while ((customer = Customer.read(reader)) != null) {
+            Asociado asociado;
+            //Primero se llena la variable asociado y luego se verifica si no es nulo
+            while ((asociado = Asociado.leer(lector)) != null) {
                 //Se llama al método que está abajo de este
-                add(customer);
+                añadir(asociado);
             }
             
             //Se cierra el archivo
-            reader.close();
+            lector.close();
         } catch (IOException ex) {
             System.out.println(ex);
         }
     }
     
     //Método encargado de agregar al asociados y trabaja en conjunto con el método anterior
-    public static void add(Customer customer){
+    public static void añadir(Asociado asociado){
         /*Verifica el tamaño del contador con el Array
         Recordar que para agregar la información desde el archivo de texto al Array, el Array está vacío
         -> Por lo que cuando el contador esté en 20 y el tamaño del Array haya llegado a su máxima capacidad que es igual 20
         se llama al método para expandir el tamaño del Array
         */
-        if(customers.length == counter){
-            expandSize();
+        if(asociados.length == contador){
+            expandirTamaño();
         }
-        customers[counter] = customer;
-        counter++;
+        //asociado se guardará en el arreglo
+        asociados[contador] = asociado;
+        //se suma el contador con base a la cantidad de asociados que se añaden
+        contador++;
     }
     
     //Método para guardar el Array en el archivo de texto
-    public static void save() {
+    public static void guardar() {
+        //Se crea la carpeta donde se guardará el archivo de texto
         new File("C:\\Database").mkdirs();
         try {
             //Se abre el archivo con el "printer"
-            PrintWriter printer = new PrintWriter("C:\\Database\\Customers.txt");
+            PrintWriter imprimir = new PrintWriter("C:\\Database\\Customers.txt");
             
             //Por cada cosa que haya en el Array
-            for (int i = 0; i < counter; i++) {
+            for (int i = 0; i < contador; i++) {
                 //Se escribe esa cosa en el archivo
-                Customer customer = customers[i];
-                customer.write(printer);
+                Asociado asociado = asociados[i];
+                asociado.escribir(imprimir);
             }   
             //Se cierra el archivo
-            printer.close();
+            imprimir.close();
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
@@ -90,18 +94,18 @@ public class AllCustomers {
     /*Método para conseguir al Asociado con el ID que se escribió en el JPanel de Inicio de sesión
     Por lo que sí, ese "String username = EscribirIdentificacion.getText();" pasa la información hasta acá
     Y si nos damos cuenta, este método es de tipo Customer, no un void*/
-    public static Customer get(String username){
+    public static Asociado get(String identificacion){
         //Se hace un loop por el Array por medio del contador
-        for(int i = 0; i < counter; i++){
-            //Se crea un objeto tipo "customer" (que luego lo cambiaré a asociado) que será equivalente al índice i del Array
-            Customer customer = customers[i];
-            //Y se crea una variable tipo String para conseguir el get del ID (que de momento se llama Username)
-            String thisUsername = customer.getUsername();
+        for(int i = 0; i < contador; i++){
+            //Se crea un objeto tipo "asociado" que será equivalente al índice i del Array
+            Asociado asociado = asociados[i];
+            //Y se crea una variable tipo String para conseguir el get del ID
+            String thisIdentificacion = asociado.getIdentificacion();
             
             //Si el ID es igual al ID que se escribió en el espacio al intentar iniciar sesión
-            if(username.equals(thisUsername)){
-                //Retorna un asociado (que de momento se llama customer )
-                return customer;
+            if(identificacion.equals(thisIdentificacion)){
+                //Retorna un asociado
+                return asociado;
             }
         }
         //Si no se encuentra coincidencias, se retorna null
@@ -109,27 +113,27 @@ public class AllCustomers {
     }
     
     //Método para eliminar un asociado
-    public static void delete(String username){
+    public static void borrar(String identificacion){
         //Se hace un loop por el Array por medio del contador
-        for(int i = 0; i < counter; i++){
+        for(int i = 0; i < contador; i++){
             //Se encuentra el índice del Array
-            Customer customer = customers[i];
+            Asociado asociado = asociados[i];
             //Llamamos al getter del ID
-            String thisUsername = customer.getUsername();
+            String thisIdentificacion = asociado.getIdentificacion();
             //Si el ID que ingresaron es igual al ID que se consiguió por el getter, se elimina el asociado
-            if(username.equals(thisUsername)){
+            if(identificacion.equals(thisIdentificacion)){
                //Se crea la variable para conseguir el último objeto almacenado en el Array para así moverlo
-               Customer lastCustomer = customers[counter - 1];
+               Asociado ultimoAsociado = asociados[contador - 1];
                /*El hueco en el array que se hace al eliminar un elemento, se llenará moviendo la última cosa
                que esté almacenada en el arreglo al hueco. 
                */
-               customers[i] = lastCustomer;
+               asociados[i] = ultimoAsociado;
                //Se le baja un número al contador para que actualice cuántos asociados hay registrados
-               counter--;
+               contador--;
                //Se guarda en el archivo de texto el cambio
-               AllCustomers.save();
+               TodosAsociados.guardar();
                //Por si acaso, todos los valores de ese usuario se vuelven null
-               customer.afterDelete();
+               asociado.despuesEliminado();
                //Se retorna para salir del método
                return;
             }

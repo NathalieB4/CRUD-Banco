@@ -1,16 +1,14 @@
-import Codigo.AllCustomers;
-import static Codigo.AllCustomers.customer;
-import Codigo.Customer;
+import Codigo.TodosAsociados;
+import Codigo.Asociado;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.io.*;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Inicio extends javax.swing.JPanel {
     
     Paneles paneles;
-    private Customer logged;
+    private Asociado iniciado;
 
     public Inicio(Paneles paneles) {
         super();
@@ -20,20 +18,21 @@ public class Inicio extends javax.swing.JPanel {
         //El botón de salir será invisible hasta que el contenido (la línea de código arriba de este texto) sea visible
         salirFondo.setVisible(false);
         salirBoton.setVisible(false);
-        /*En caso de que se cierre el programa, y ya haya un archivo de texto con información y al mismo tiempo
-        necesitar hacer inicio de sesión inmediatamente,
-        con esta línea de código, nos encargamos de que todo lo que está en el archivo de texto, al Array
+        /*Se guarda la variable de instancia de la línea 12 en paneles, el cual el segundo equivale
+        al paneles que creamos dentro de los argumentos del constructor (línea 15)
         */
         this.paneles = paneles;
+        
     }
     
-    public Customer getLoggedIn(){
-
-        return logged; 
+    //Método para memorizar qué asociado inició sesión
+    public Asociado getLoggedIn(){
+        return iniciado; 
     }
     
-    public void logOut(){
-        logged = null;
+    //Método para olvidar al asociado que había iniciado sesión
+    public void cerrarSesion(){
+        iniciado = null;
         
     }
     
@@ -228,7 +227,7 @@ public class Inicio extends javax.swing.JPanel {
         String password = EscribirClave.getText();
         
         //Se llama al método get creado en la clase de AllCustomers
-        Customer customer = AllCustomers.get(username);
+        Asociado customer = TodosAsociados.get(username);
         
         //Si lo que retorna el método de get es igual a null
         if(customer == null){
@@ -239,16 +238,17 @@ public class Inicio extends javax.swing.JPanel {
             EscribirClave.setText("Ingrese su Clave");
         }else{
             //Si no retorna null, se verifica ahora la clave por medio del getter
-            String verifyPass = customer.getPassword();
+            String verifyPass = customer.getContraseña();
             
             /*Si la información dentro de la variable password que se creó arriba que se creó arriba
             es igual que lo que se obtiene del getter
             */ 
             if(password.equals(verifyPass)){
-               //Se guarda en la variable de instancia
-               logged = customer;
-               //Se enseña al panel del menú de asociados ya habiendo iniciado la sesión
+               /*Se guarda en la variable de instancia al asociado, para que el resto del trabajo lo haga
+               el método que recuerda quién inició sesión*/
+               iniciado = customer;
                
+               //Se enseña el nuevo JPanel con contenido nuevo
                ShowPanel(paneles.getAsociadoMenu());
                //El botón para ingresar se vuelve invisible (esto porque me seguía apareciendo ahí)
                FondoInicio.setVisible(false);
@@ -296,7 +296,8 @@ public class Inicio extends javax.swing.JPanel {
     }//GEN-LAST:event_salirBotonMouseExited
 
     private void salirBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirBotonMouseClicked
-        logOut();
+        //Se cierra sesión llamando al método para olvidar quién había iniciado sesión
+        cerrarSesion();
         //En caso de darle click al botón de salir, se pondrán invisibles la pizarra y el propio botón de salir
         contenido.setVisible(false);
         salirFondo.setVisible(false);

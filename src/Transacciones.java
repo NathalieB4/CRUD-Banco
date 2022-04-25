@@ -1,7 +1,5 @@
-
-import Codigo.Customer;
+import Codigo.Asociado;
 import java.awt.Color;
-import java.util.HashSet;
 import javax.swing.JOptionPane;
 
 
@@ -127,7 +125,7 @@ public class Transacciones extends javax.swing.JPanel {
             .addComponent(verPrestamoBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        add(verPrestamoFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 90, 40));
+        add(verPrestamoFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 90, 40));
 
         verAhorroFondo.setBackground(new java.awt.Color(0, 102, 102));
         verAhorroFondo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -171,7 +169,7 @@ public class Transacciones extends javax.swing.JPanel {
         textoVerPrestamo.setForeground(new java.awt.Color(153, 153, 153));
         textoVerPrestamo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         textoVerPrestamo.setText("Monto préstamos acumulados:");
-        add(textoVerPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 200, 20));
+        add(textoVerPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 200, 20));
 
         pedirFondo.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -247,7 +245,7 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_verPrestamoBotonMouseExited
 
     private void verPrestamoBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verPrestamoBotonMouseClicked
-        Customer customer = paneles.getInicioSesion().getLoggedIn();
+        Asociado customer = paneles.getInicioSesion().getLoggedIn();
         JOptionPane.showMessageDialog(null, "₡" + customer.getPrestamos());
     }//GEN-LAST:event_verPrestamoBotonMouseClicked
 
@@ -260,7 +258,7 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_verAhorroBotonMouseExited
 
     private void verAhorroBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verAhorroBotonMouseClicked
-        Customer customer = paneles.getInicioSesion().getLoggedIn();
+        Asociado customer = paneles.getInicioSesion().getLoggedIn();
         JOptionPane.showMessageDialog(null,"₡" + customer.getAhorro());
     }//GEN-LAST:event_verAhorroBotonMouseClicked
 
@@ -273,15 +271,15 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_pedirBotonMouseExited
 
     private void pedirBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pedirBotonMouseClicked
-        Customer customer = paneles.getInicioSesion().getLoggedIn();
+        Asociado asociado = paneles.getInicioSesion().getLoggedIn();
         int prestamo = Integer.parseInt(EscribirPrestamo.getText());
         String texto = String.valueOf(prestamo);
         
         if(!texto.equals("Monto a pedir") && !texto.isEmpty()){
             if(prestamo != 0){
-                if(prestamo < customer.getAhorro()){
-                    customer.setPrestamos(customer.getPrestamos() + prestamo);
-                    customer.setAhorro(customer.getAhorro() - prestamo);
+                if(prestamo <= asociado.getAhorro()){
+                    asociado.setPrestamos(asociado.getPrestamos() + prestamo);
+                    asociado.setMontoPrestamoDisponible(asociado.getMontoPrestamoDisponible() - prestamo);
                     JOptionPane.showMessageDialog(null, "Préstamo completado exitosamente");
                     
                     EscribirPrestamo.setText("Monto a pedir");
@@ -307,22 +305,22 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_añadirBotonMouseExited
 
     private void añadirBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirBotonMouseClicked
-        Customer customer = paneles.getInicioSesion().getLoggedIn();
+        Asociado asociado = paneles.getInicioSesion().getLoggedIn();
         int ahorro = Integer.parseInt(EscribirAhorro.getText());
         String texto = String.valueOf(ahorro);
         
         if(!texto.equals("Monto a añadir") && !texto.isEmpty()){
            if(ahorro != 0){
-               customer.setAhorro(customer.getAhorro() + ahorro);
+               asociado.setAhorro(asociado.getAhorro() + ahorro);
                JOptionPane.showMessageDialog(null, "Monto añadido exitosamente");
                
                EscribirAhorro.setText("Monto a añadir");
                EscribirAhorro.setForeground(new Color(102, 102, 102));
                
-               if(ahorro > customer.getPrestamos()){
-                   customer.setPrestamos(0);
+               if(ahorro > asociado.getPrestamos()){
+                   asociado.setPrestamos(0);
                }else{
-                   customer.setPrestamos(customer.getPrestamos() - ahorro);
+                   asociado.setPrestamos(asociado.getPrestamos() - ahorro);
                }
                
            }else{

@@ -11,6 +11,7 @@ public class Asociado extends javax.swing.JPanel {
         super();
         initComponents();
         this.paneles = paneles;
+        contenido.removeAll();
     }
     
     private void ShowPanel(JPanel p){
@@ -23,6 +24,13 @@ public class Asociado extends javax.swing.JPanel {
         contenido.repaint();
     }
     
+    private void showPanel(JPanel contenido){
+        contenido.setSize(570, 380);
+        contenido.setLocation(0, 0);
+    }
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -34,6 +42,10 @@ public class Asociado extends javax.swing.JPanel {
         dividendosFondo = new javax.swing.JPanel();
         dividendosBoton = new javax.swing.JLabel();
         contenido = new javax.swing.JPanel();
+        textoPrincipal = new javax.swing.JLabel();
+        separadorTexto = new javax.swing.JSeparator();
+        textoOpciones = new javax.swing.JLabel();
+        separadorSuperior = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,15 +148,51 @@ public class Asociado extends javax.swing.JPanel {
 
         contenido.setBackground(new java.awt.Color(255, 255, 255));
 
+        textoPrincipal.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        textoPrincipal.setForeground(new java.awt.Color(0, 0, 0));
+        textoPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoPrincipal.setText("MENÚ PARA ASOCIADOS");
+
+        textoOpciones.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        textoOpciones.setForeground(new java.awt.Color(0, 0, 0));
+        textoOpciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoOpciones.setText("Nuevas opciones están disponibles para su uso");
+
         javax.swing.GroupLayout contenidoLayout = new javax.swing.GroupLayout(contenido);
         contenido.setLayout(contenidoLayout);
         contenidoLayout.setHorizontalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 570, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(separadorSuperior)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenidoLayout.createSequentialGroup()
+                .addContainerGap(105, Short.MAX_VALUE)
+                .addGroup(contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenidoLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(textoOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(contenidoLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(textoPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(separadorTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(95, 95, 95))
         );
         contenidoLayout.setVerticalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
+            .addGroup(contenidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(separadorSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addGroup(contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenidoLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(textoOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textoPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contenidoLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(separadorTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
 
         add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 570, 380));
@@ -176,14 +224,26 @@ public class Asociado extends javax.swing.JPanel {
 
     private void perfilBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_perfilBotonMouseClicked
         ShowPanel(paneles.getMenuPerfil());
+        separadorSuperior.setVisible(false);
+        textoPrincipal.setVisible(false);
+        separadorTexto.setVisible(false);
+        textoOpciones.setVisible(false);
     }//GEN-LAST:event_perfilBotonMouseClicked
 
     private void transaccionesBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_transaccionesBotonMouseClicked
         ShowPanel(paneles.getMenuTransacciones());
+        separadorSuperior.setVisible(false);
+        textoPrincipal.setVisible(false);
+        separadorTexto.setVisible(false);
+        textoOpciones.setVisible(false);
     }//GEN-LAST:event_transaccionesBotonMouseClicked
 
     private void dividendosBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dividendosBotonMouseClicked
         ShowPanel(paneles.getMenuDividendos());
+        separadorSuperior.setVisible(false);
+        textoPrincipal.setVisible(false);
+        separadorTexto.setVisible(false);
+        textoOpciones.setVisible(false);
     }//GEN-LAST:event_dividendosBotonMouseClicked
 
 
@@ -193,6 +253,10 @@ public class Asociado extends javax.swing.JPanel {
     private javax.swing.JPanel dividendosFondo;
     private javax.swing.JLabel perfilBoton;
     private javax.swing.JPanel perfilFondo;
+    private javax.swing.JSeparator separadorSuperior;
+    private javax.swing.JSeparator separadorTexto;
+    private javax.swing.JLabel textoOpciones;
+    private javax.swing.JLabel textoPrincipal;
     private javax.swing.JLabel transaccionesBoton;
     private javax.swing.JPanel transaccionesFondo;
     // End of variables declaration//GEN-END:variables

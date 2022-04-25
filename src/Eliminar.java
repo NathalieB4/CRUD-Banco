@@ -1,6 +1,6 @@
 
-import Codigo.AllCustomers;
-import Codigo.Customer;
+import Codigo.TodosAsociados;
+import Codigo.Asociado;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -148,17 +148,17 @@ public class Eliminar extends javax.swing.JPanel {
         /*Se llama al método del getter de usuario con tal de buscar coincidencias
         Tal y como se pudo observar en el código de Iniciar sesión
         */
-        Customer customer = AllCustomers.get(username);
+        Asociado customer = TodosAsociados.get(username);
         
         if(customer == null){
             //Si se retorna nulo, enseñará un mensaje de error
             JOptionPane.showMessageDialog(null, "Asociado no registrado");
         }else{
             //Se crea la variable para verificar contraseñas
-            String verifyPass = customer.getPassword();
+            String verifyPass = customer.getContraseña();
             if(password.equals(verifyPass)){
                 //Se llama al método para eliminar la información correspondiente junto con el Asociado
-                AllCustomers.delete(username);
+                TodosAsociados.borrar(username);
                 JOptionPane.showMessageDialog(null, "Registro eliminado exitosamente");
                 //Se vuelven a poner los textos por defecto
                 EscribirIdentificacion.setText("Ingrese su Identificación");

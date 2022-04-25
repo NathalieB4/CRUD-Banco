@@ -1,5 +1,6 @@
 public class Paneles {
     
+    //Se crean variables de instancia de todos los paneles
     private MenuAsociados menuAsociados;
     private Inicio iniciarSesion;
     private Registro registrarse;
@@ -10,6 +11,8 @@ public class Paneles {
     private Transacciones menuTransacciones;
     private Dividendos menuDividendos;
     
+    //se crea el constructor con todos los paneles
+    //"This" significa que, desde los paneles, se obtiene acceso a esta clase Paneles
     public Paneles(){
         menuAsociados = new MenuAsociados(this);
         iniciarSesion = new Inicio(this);
@@ -24,6 +27,7 @@ public class Paneles {
         menuAsociados.setVisible(true);
     }
     
+    //Se crean los getters de todos los paneles
     public MenuAsociados getMenuAso(){
         return menuAsociados;
     }
@@ -59,5 +63,4 @@ public class Paneles {
     public Dividendos getMenuDividendos(){
         return menuDividendos;
     }
-    
 }

@@ -1,7 +1,4 @@
-
-import Codigo.AllCustomers;
-import static Codigo.AllCustomers.customer;
-import Codigo.Customer;
+import Codigo.Asociado;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -169,19 +166,19 @@ public class Perfil extends javax.swing.JPanel {
     }//GEN-LAST:event_guardarBotonMouseExited
 
     private void guardarBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBotonMouseClicked
-        Customer customer = paneles.getInicioSesion().getLoggedIn();
+        Asociado asociado = paneles.getInicioSesion().getLoggedIn();
         
-        String name = EscribirNombre.getText();
+        String nombre = EscribirNombre.getText();
         String tel = EscribirTelefono.getText();
         String email = EscribirCorreo.getText();
-        String password = EscribirClave.getText();
+        String contraseña = EscribirClave.getText();
         
-        if(!name.equals("Ingrese un nuevo Nombre") && !name.isEmpty() && !tel.equals("Ingrese un nuevo Teléfono") && !tel.isEmpty()){
-            if(!email.equals("Ingrese un nuevo Correo") && !email.isEmpty() && !password.equals("Ingrese una nueva Clave") && !password.isEmpty()){
-                customer.setName(name);
-                customer.setTel(tel);
-                customer.setEmail(email);
-                customer.setPassword(password);
+        if(!nombre.equals("Ingrese un nuevo Nombre") && !nombre.isEmpty() && !tel.equals("Ingrese un nuevo Teléfono") && !tel.isEmpty()){
+            if(!email.equals("Ingrese un nuevo Correo") && !email.isEmpty() && !contraseña.equals("Ingrese una nueva Clave") && !contraseña.isEmpty()){
+                asociado.setNombre(nombre);
+                asociado.setTel(tel);
+                asociado.setEmail(email);
+                asociado.setContraseña(contraseña);
                 
                 EscribirNombre.setText("Ingrese un nuevo Nombre");
                 EscribirTelefono.setText("Ingrese un nuevo Teléfono");
