@@ -49,7 +49,7 @@ public class AllCustomers {
             //Se cierra el archivo
             reader.close();
         } catch (IOException ex) {
-            System.out.println(ex + "the error is here");
+            System.out.println(ex);
         }
     }
     
@@ -83,7 +83,7 @@ public class AllCustomers {
             //Se cierra el archivo
             printer.close();
         } catch (FileNotFoundException ex) {
-            System.out.println(ex + "hi, the error is here");
+            System.out.println(ex);
         }
     }
     

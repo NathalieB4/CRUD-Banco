@@ -175,9 +175,6 @@ public class Perfil extends javax.swing.JPanel {
         String tel = EscribirTelefono.getText();
         String email = EscribirCorreo.getText();
         String password = EscribirClave.getText();
-        String username = "";
-        String balance = "";
-        String loans = "";
         
         if(!name.equals("Ingrese un nuevo Nombre") && !name.isEmpty() && !tel.equals("Ingrese un nuevo Teléfono") && !tel.isEmpty()){
             if(!email.equals("Ingrese un nuevo Correo") && !email.isEmpty() && !password.equals("Ingrese una nueva Clave") && !password.isEmpty()){
