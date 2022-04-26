@@ -26,7 +26,7 @@ public class Inicio extends javax.swing.JPanel {
     }
     
     //Método para memorizar qué asociado inició sesión
-    public Asociado getLoggedIn(){
+    public Asociado getSesion(){
         return iniciado; 
     }
     

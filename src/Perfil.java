@@ -166,7 +166,7 @@ public class Perfil extends javax.swing.JPanel {
     }//GEN-LAST:event_guardarBotonMouseExited
 
     private void guardarBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBotonMouseClicked
-        Asociado asociado = paneles.getInicioSesion().getLoggedIn();
+        Asociado asociado = paneles.getInicioSesion().getSesion();
         
         String nombre = EscribirNombre.getText();
         String tel = EscribirTelefono.getText();

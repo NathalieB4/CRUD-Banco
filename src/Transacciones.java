@@ -245,7 +245,7 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_verPrestamoBotonMouseExited
 
     private void verPrestamoBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verPrestamoBotonMouseClicked
-        Asociado customer = paneles.getInicioSesion().getLoggedIn();
+        Asociado customer = paneles.getInicioSesion().getSesion();
         JOptionPane.showMessageDialog(null, "₡" + customer.getPrestamos());
     }//GEN-LAST:event_verPrestamoBotonMouseClicked
 
@@ -258,7 +258,7 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_verAhorroBotonMouseExited
 
     private void verAhorroBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verAhorroBotonMouseClicked
-        Asociado customer = paneles.getInicioSesion().getLoggedIn();
+        Asociado customer = paneles.getInicioSesion().getSesion();
         JOptionPane.showMessageDialog(null,"₡" + customer.getAhorro());
     }//GEN-LAST:event_verAhorroBotonMouseClicked
 
@@ -271,7 +271,7 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_pedirBotonMouseExited
 
     private void pedirBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pedirBotonMouseClicked
-        Asociado asociado = paneles.getInicioSesion().getLoggedIn();
+        Asociado asociado = paneles.getInicioSesion().getSesion();
         int prestamo = Integer.parseInt(EscribirPrestamo.getText());
         String texto = String.valueOf(prestamo);
         
@@ -305,7 +305,7 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_añadirBotonMouseExited
 
     private void añadirBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_añadirBotonMouseClicked
-        Asociado asociado = paneles.getInicioSesion().getLoggedIn();
+        Asociado asociado = paneles.getInicioSesion().getSesion();
         int ahorro = Integer.parseInt(EscribirAhorro.getText());
         String texto = String.valueOf(ahorro);
         
