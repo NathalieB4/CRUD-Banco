@@ -1,5 +1,6 @@
 import Codigo.TodosAsociados;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 public class Dividendos extends javax.swing.JPanel {
    
@@ -70,7 +71,7 @@ public class Dividendos extends javax.swing.JPanel {
     }//GEN-LAST:event_dividendosBotonMouseExited
 
     private void dividendosBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dividendosBotonMouseClicked
-        System.out.println(TodosAsociados.getNombres());
+        JOptionPane.showMessageDialog(null, TodosAsociados.getNombres());
     }//GEN-LAST:event_dividendosBotonMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

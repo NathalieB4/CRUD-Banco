@@ -169,19 +169,10 @@ public class TodosAsociados {
         
         for(int i = 0; i < contador; i++){
             Asociado asociado = asociados[i];
-            getLosNombres = getLosNombres + asociado.getNombre();
+            getLosNombres = getLosNombres + asociado.getNombre() + " " + asociado.getDividendos() + "\n";
             
         }
         return getLosNombres;
     }
     
-    public static int getDividendos(){
-        int getDividendos = 0;
-        
-        for(int i = 0; i < contador; i++){
-            Asociado asociado = asociados[i];
-            getDividendos = (TodosAsociados.getGananciasPrestamos() / TodosAsociados.getAhorros()) * asociado.getAhorro();
-        }
-        return getDividendos;
-    }
 }

@@ -164,5 +164,10 @@ public class Asociado {
         montoPrestamoDisponible = Integer.MIN_VALUE;
     }
     
-    
+    public int getDividendos(){
+        double porcentaje = (double) TodosAsociados.getGananciasPrestamos() / (double) TodosAsociados.getAhorros();
+        porcentaje = porcentaje * getAhorro();
+        int resultado = (int) (porcentaje);
+        return resultado;
+    }
 }
