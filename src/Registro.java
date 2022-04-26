@@ -95,7 +95,7 @@ public class Registro extends javax.swing.JPanel {
         escribirPuesto.setBackground(new java.awt.Color(255, 255, 255));
         escribirPuesto.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         escribirPuesto.setForeground(new java.awt.Color(102, 102, 102));
-        escribirPuesto.setText("Ingrese un ahorro inicial");
+        escribirPuesto.setText("Ingrese un monto de ahorro inicial");
         escribirPuesto.setBorder(null);
         escribirPuesto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {

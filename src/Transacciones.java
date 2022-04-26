@@ -2,9 +2,6 @@ import Codigo.Asociado;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
-
-
-
 public class Transacciones extends javax.swing.JPanel {
     
     Paneles paneles;
@@ -38,6 +35,7 @@ public class Transacciones extends javax.swing.JPanel {
         pedirBoton = new javax.swing.JLabel();
         añadirFondo = new javax.swing.JPanel();
         añadirBoton = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -46,13 +44,14 @@ public class Transacciones extends javax.swing.JPanel {
 
         TextoAhorroPredeterminado.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         TextoAhorroPredeterminado.setForeground(new java.awt.Color(0, 0, 0));
+        TextoAhorroPredeterminado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TextoAhorroPredeterminado.setText("AÑADIR AHORROS");
-        add(TextoAhorroPredeterminado, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+        add(TextoAhorroPredeterminado, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 200, -1));
 
         TextoPrestamoPrincipal.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         TextoPrestamoPrincipal.setForeground(new java.awt.Color(0, 0, 0));
-        TextoPrestamoPrincipal.setText("PEDIR PRÉSTAMOS");
-        add(TextoPrestamoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+        TextoPrestamoPrincipal.setText("SOLICITAR PRÉSTAMO");
+        add(TextoPrestamoPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         TextoPrestamo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         TextoPrestamo.setForeground(new java.awt.Color(0, 0, 0));
@@ -79,7 +78,7 @@ public class Transacciones extends javax.swing.JPanel {
         EscribirPrestamo.setBackground(new java.awt.Color(255, 255, 255));
         EscribirPrestamo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         EscribirPrestamo.setForeground(new java.awt.Color(102, 102, 102));
-        EscribirPrestamo.setText("Monto a pedir");
+        EscribirPrestamo.setText("Monto a solicitar");
         EscribirPrestamo.setBorder(null);
         EscribirPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -176,7 +175,7 @@ public class Transacciones extends javax.swing.JPanel {
         pedirBoton.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         pedirBoton.setForeground(new java.awt.Color(0, 0, 0));
         pedirBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pedirBoton.setText("PEDIR");
+        pedirBoton.setText("SOLICITAR");
         pedirBoton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pedirBoton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -194,14 +193,14 @@ public class Transacciones extends javax.swing.JPanel {
         pedirFondo.setLayout(pedirFondoLayout);
         pedirFondoLayout.setHorizontalGroup(
             pedirFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pedirBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(pedirBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
         pedirFondoLayout.setVerticalGroup(
             pedirFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pedirBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        add(pedirFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 90, 40));
+        add(pedirFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 100, 40));
 
         añadirFondo.setBackground(new java.awt.Color(0, 153, 153));
 
@@ -226,14 +225,15 @@ public class Transacciones extends javax.swing.JPanel {
         añadirFondo.setLayout(añadirFondoLayout);
         añadirFondoLayout.setHorizontalGroup(
             añadirFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(añadirBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+            .addComponent(añadirBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
         añadirFondoLayout.setVerticalGroup(
             añadirFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(añadirBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        add(añadirFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 90, 40));
+        add(añadirFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 100, 40));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 550, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void verPrestamoBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_verPrestamoBotonMouseEntered
@@ -309,12 +309,12 @@ public class Transacciones extends javax.swing.JPanel {
         int ahorro = Integer.parseInt(EscribirAhorro.getText());
         String texto = String.valueOf(ahorro);
         
-        if(!texto.equals("Monto a añadir") && !texto.isEmpty()){
+        if(!texto.equals("Monto a solicitar") && !texto.isEmpty()){
            if(ahorro != 0){
                asociado.setAhorro(asociado.getAhorro() + ahorro);
                JOptionPane.showMessageDialog(null, "Monto añadido exitosamente");
                
-               EscribirAhorro.setText("Monto a añadir");
+               EscribirAhorro.setText("Monto a solicitar");
                EscribirAhorro.setForeground(new Color(102, 102, 102));
                
                if(ahorro > asociado.getPrestamos()){
@@ -332,7 +332,7 @@ public class Transacciones extends javax.swing.JPanel {
     }//GEN-LAST:event_añadirBotonMouseClicked
 
     private void EscribirPrestamoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EscribirPrestamoMousePressed
-        if(EscribirPrestamo.getText().equals("Monto a pedir")){
+        if(EscribirPrestamo.getText().equals("Monto a solicitar")){
            EscribirPrestamo.setText("");
            EscribirPrestamo.setForeground(Color.black);
         }
@@ -348,7 +348,7 @@ public class Transacciones extends javax.swing.JPanel {
            EscribirAhorro.setForeground(Color.black);
         }
         if(EscribirPrestamo.getText().isEmpty()){
-           EscribirPrestamo.setText("Monto a pedir");
+           EscribirPrestamo.setText("Monto a solicitar");
            EscribirPrestamo.setForeground(new Color(102, 102, 102));
         }
     }//GEN-LAST:event_EscribirAhorroMousePressed
@@ -366,6 +366,7 @@ public class Transacciones extends javax.swing.JPanel {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel pedirBoton;
     private javax.swing.JPanel pedirFondo;
     private javax.swing.JLabel textoVerAhorro;
