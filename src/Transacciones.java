@@ -130,11 +130,15 @@ public class Transacciones extends javax.swing.JPanel {
         verPrestamoFondo.setLayout(verPrestamoFondoLayout);
         verPrestamoFondoLayout.setHorizontalGroup(
             verPrestamoFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(verPrestamoBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, verPrestamoFondoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(verPrestamoBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         verPrestamoFondoLayout.setVerticalGroup(
             verPrestamoFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(verPrestamoBoton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, verPrestamoFondoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(verPrestamoBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         add(verPrestamoFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 60, 30));
@@ -244,7 +248,7 @@ public class Transacciones extends javax.swing.JPanel {
 
         informacionFondo.setBackground(new java.awt.Color(0, 153, 153));
 
-        informacionBoton.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        informacionBoton.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
         informacionBoton.setForeground(new java.awt.Color(0, 0, 0));
         informacionBoton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         informacionBoton.setText("INFORMACIÓN");
@@ -265,7 +269,7 @@ public class Transacciones extends javax.swing.JPanel {
         informacionFondo.setLayout(informacionFondoLayout);
         informacionFondoLayout.setHorizontalGroup(
             informacionFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(informacionBoton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+            .addComponent(informacionBoton, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
         informacionFondoLayout.setVerticalGroup(
             informacionFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,7 +278,7 @@ public class Transacciones extends javax.swing.JPanel {
                 .addComponent(informacionBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(informacionFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 110, -1));
+        add(informacionFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 100, -1));
 
         textoVerPrestamo1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         textoVerPrestamo1.setForeground(new java.awt.Color(153, 153, 153));
@@ -390,7 +394,7 @@ public class Transacciones extends javax.swing.JPanel {
             if (prestamo != 0) {
                 if (prestamo < asociado.getAhorro()) {
                     if (prestamo < asociado.getMontoPrestamoDisponible()) {
-                        tasaInteres = (int) ((0.05 * prestamo)); //-> Literalmente el resultado es el mismo sin esto: / (1 - Math.pow(1 + 0.05, -12)));
+                        tasaInteres = (tasaInteres + (int) ((0.05 * prestamo))); //-> Literalmente el resultado es el mismo sin esto: / (1 - Math.pow(1 + 0.05, -12)));
                         asociado.setMontoPrestamoDisponible(asociado.getAhorro() - prestamo);
                         asociado.setPrestamos(asociado.getPrestamos() + (tasaInteres + prestamo));
                         JOptionPane.showMessageDialog(null, "Préstamo completado exitosamente \nSu tasa de interés es de ₡" + tasaInteres);
@@ -478,7 +482,7 @@ public class Transacciones extends javax.swing.JPanel {
 
     private void informacionBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacionBotonMouseEntered
         informacionFondo.setBackground(new Color(0, 102, 102));
-        informacionBoton.setForeground(Color.white);
+        informacionBoton.setForeground(Color.black);
     }//GEN-LAST:event_informacionBotonMouseEntered
 
     private void informacionBotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_informacionBotonMouseExited

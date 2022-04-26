@@ -163,4 +163,6 @@ public class Asociado {
         gananciasPrestamos = Integer.MIN_VALUE;
         montoPrestamoDisponible = Integer.MIN_VALUE;
     }
+    
+    
 }

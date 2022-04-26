@@ -36,7 +36,7 @@ public class TodosAsociados {
     private static void cargar() {
         try {
             //Se crea al lector y lee el arhivo
-            BufferedReader lector = new BufferedReader(new FileReader("C:\\Database\\Customers.txt"));
+            BufferedReader lector = new BufferedReader(new FileReader("C:\\BaseDatos\\Asociados.txt"));
             //Se pone el contador en 0 porque el Array debe estar vacío para poder pasar toda la información
             contador = 0;
 
@@ -73,10 +73,10 @@ public class TodosAsociados {
     //Método para guardar el Array en el archivo de texto
     public static void guardar() {
         //Se crea la carpeta donde se guardará el archivo de texto
-        new File("C:\\Database").mkdirs();
+        new File("C:\\BaseDatos").mkdirs();
         try {
             //Se abre el archivo con el "printer"
-            PrintWriter imprimir = new PrintWriter("C:\\Database\\Customers.txt");
+            PrintWriter imprimir = new PrintWriter("C:\\BaseDatos\\Asociados.txt");
 
             //Por cada cosa que haya en el Array
             for (int i = 0; i < contador; i++) {
@@ -145,23 +145,23 @@ public class TodosAsociados {
     }
     
     public static int getAhorros(){
-        int getLosAhorros = 0;
+        int getAhorros = 0;
         
         for(int i = 0; i < contador; i++){
             Asociado asociado = asociados[i];
-            getLosAhorros = getLosAhorros + asociado.getAhorro();
+            getAhorros = getAhorros + asociado.getAhorro();
         }
-        return getLosAhorros;
+        return getAhorros;
     }
     
     public static int getGananciasPrestamos(){
-        int getLosPrestamos = 0;
+        int getGanancias = 0;
         
         for(int i = 0; i < contador; i++){
             Asociado asociado = asociados[i];
-            getLosPrestamos = getLosPrestamos + asociado.getGananciasPrestamos();
+            getGanancias = getGanancias + asociado.getGananciasPrestamos();
         }
-        return getLosPrestamos;
+        return getGanancias;
     }
     
     public static String getNombres(){
@@ -169,17 +169,19 @@ public class TodosAsociados {
         
         for(int i = 0; i < contador; i++){
             Asociado asociado = asociados[i];
-            getLosNombres = asociado.getNombre();
+            getLosNombres = getLosNombres + asociado.getNombre();
             
         }
         return getLosNombres;
     }
     
-    public Object[][] dividendosTabla(){
+    public static int getDividendos(){
+        int getDividendos = 0;
         
-        Object[][] resultadoTabla = new Object[contador][4];
-        
-        return resultadoTabla;
-        
+        for(int i = 0; i < contador; i++){
+            Asociado asociado = asociados[i];
+            getDividendos = (TodosAsociados.getGananciasPrestamos() / TodosAsociados.getAhorros()) * asociado.getAhorro();
+        }
+        return getDividendos;
     }
 }
