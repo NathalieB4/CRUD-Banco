@@ -11,9 +11,10 @@ public class Asociado {
     private String contraseña;
     private int ahorro;
     private int prestamos;
+    private int gananciasPrestamos;
     private int montoPrestamoDisponible;
 
-    public Asociado(String nombre, String tel, String email, String identificacion, String contraseña, int ahorro, int prestamos, int montoPrestamoDisponible) {
+    public Asociado(String nombre, String tel, String email, String identificacion, String contraseña, int ahorro, int prestamos, int gananciasPrestamos, int montoPrestamoDisponible) {
         this.nombre = nombre;
         this.tel = tel;
         this.email = email;
@@ -22,6 +23,7 @@ public class Asociado {
         this.ahorro = ahorro;
         this.prestamos = prestamos;
         this.montoPrestamoDisponible = montoPrestamoDisponible;
+        this.gananciasPrestamos = gananciasPrestamos;
     }
     
     public String getNombre() {
@@ -96,7 +98,15 @@ public class Asociado {
         TodosAsociados.guardar();
     }
 
-    
+    public int getGananciasPrestamos() {
+        return gananciasPrestamos;
+    }
+
+    public void setGananciasPrestamos(int gananciasPrestamos) {
+        this.gananciasPrestamos = gananciasPrestamos;
+        TodosAsociados.guardar();
+    }
+
     //Método para leer el archivo de texto y luego escribir la información en el Array
     public static Asociado leer(BufferedReader lector){
         try {
@@ -107,16 +117,18 @@ public class Asociado {
             String contraseña = lector.readLine();
             String ahorroString = lector.readLine();
             String prestamosString = lector.readLine();
+            String gananciaPrestamo = lector.readLine();
             String montoPrestamo = lector.readLine();
             
-            if(nombre == null || tel == null || email == null || identificacion == null || contraseña == null || ahorroString == null || prestamosString == null || montoPrestamo == null){
+            if(nombre == null || tel == null || email == null || identificacion == null || contraseña == null || ahorroString == null || prestamosString == null || gananciaPrestamo == null || montoPrestamo == null){
                 return null;
             }
             
             int ahorro = Integer.parseInt(ahorroString);
             int prestamos = Integer.parseInt(prestamosString);
             int montoPrestamoDisponible = Integer.parseInt(prestamosString);
-            Asociado asociado = new Asociado(nombre, tel, email, identificacion, contraseña, ahorro, prestamos, montoPrestamoDisponible);
+            int gananciasPrestamos = Integer.parseInt(gananciaPrestamo);
+            Asociado asociado = new Asociado(nombre, tel, email, identificacion, contraseña, ahorro, prestamos, montoPrestamoDisponible, gananciasPrestamos);
             return asociado;
             
         } catch (IOException ex) {
@@ -135,6 +147,7 @@ public class Asociado {
         imprimir.println(contraseña);
         imprimir.println(ahorro);
         imprimir.println(prestamos);
+        imprimir.println(gananciasPrestamos);
         imprimir.println(montoPrestamoDisponible);
     }
     
@@ -147,6 +160,7 @@ public class Asociado {
         contraseña = null;
         ahorro = Integer.MIN_VALUE;
         prestamos = Integer.MIN_VALUE;
+        gananciasPrestamos = Integer.MIN_VALUE;
         montoPrestamoDisponible = Integer.MIN_VALUE;
     }
 }

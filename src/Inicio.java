@@ -32,8 +32,7 @@ public class Inicio extends javax.swing.JPanel {
     
     //Método para olvidar al asociado que había iniciado sesión
     public void cerrarSesion(){
-        iniciado = null;
-        
+        iniciado = null;       
     }
     
     //Método para configurar el JPanel que luego aparecerá

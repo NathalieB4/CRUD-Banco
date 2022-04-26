@@ -205,11 +205,12 @@ public class Registro extends javax.swing.JPanel {
         String ahorroString = String.valueOf(ahorro);
         int prestamos = 0;
         int montoPrestamoDisponible = ahorro;
+        int gananciasPrestamos = 0;
         
         int ahorroMin = 10000;
 
         //Se llama al constructor para guardar la información
-        Asociado customer = new Asociado(nombre, tel, email, identificacion, contraseña, ahorro, prestamos, montoPrestamoDisponible);
+        Asociado customer = new Asociado(nombre, tel, email, identificacion, contraseña, ahorro, prestamos, gananciasPrestamos, montoPrestamoDisponible);
         Asociado verificarID = TodosAsociados.get(identificacion);
 
         //Se verifican que no se queden espacios en blanco o con textos por defecto

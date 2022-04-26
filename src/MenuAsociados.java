@@ -13,7 +13,7 @@ public class MenuAsociados extends javax.swing.JFrame {
         super();
         initComponents();
         this.paneles = paneles;
-        
+
         this.setLocationRelativeTo(null);
     }
         

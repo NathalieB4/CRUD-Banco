@@ -34,6 +34,7 @@ public class Perfil extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -155,6 +156,7 @@ public class Perfil extends javax.swing.JPanel {
 
         jSeparator4.setForeground(new java.awt.Color(153, 153, 153));
         add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 200, 30));
+        add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 550, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarBotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBotonMouseEntered
@@ -285,6 +287,7 @@ public class Perfil extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JLabel textoClave;
     private javax.swing.JLabel textoCorreo;
     private javax.swing.JLabel textoNombre;
