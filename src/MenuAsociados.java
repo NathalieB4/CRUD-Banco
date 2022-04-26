@@ -294,7 +294,6 @@ public class MenuAsociados extends javax.swing.JFrame {
         MenuAsociados menuAso = paneles.getMenuAso();
         Principal menuPrin = paneles.getMenuPrincipal();
         menuAso.showPanel(menuPrin);
-        System.out.println(TodosAsociados.getAhorros() + " " + TodosAsociados.getGananciasPrestamos());
     }//GEN-LAST:event_BotonPrincipalMouseClicked
 
     private void BotonRegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRegistrarseMouseClicked
