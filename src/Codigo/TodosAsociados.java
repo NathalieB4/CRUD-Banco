@@ -154,12 +154,12 @@ public class TodosAsociados {
         return getLosAhorros;
     }
     
-    public static int getPrestamos(){
+    public static int getGananciasPrestamos(){
         int getLosPrestamos = 0;
         
         for(int i = 0; i < contador; i++){
             Asociado asociado = asociados[i];
-            getLosPrestamos = getLosPrestamos + asociado.getPrestamos();
+            getLosPrestamos = getLosPrestamos + asociado.getGananciasPrestamos();
         }
         return getLosPrestamos;
     }
@@ -173,5 +173,13 @@ public class TodosAsociados {
             
         }
         return getLosNombres;
+    }
+    
+    public Object[][] dividendosTabla(){
+        
+        Object[][] resultadoTabla = new Object[contador][4];
+        
+        return resultadoTabla;
+        
     }
 }
